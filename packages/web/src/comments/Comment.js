@@ -615,7 +615,7 @@ class Comment extends React.Component {
               <CommentDisplayName>
                 <DisplayNameWrapper>
                   <DisplayName removed={comment.removed}>
-                    {comment.displayName || NON_BREAKING_SPACE_CHARACTER}
+                    {`${comment.forename} ${comment.surname}` || NON_BREAKING_SPACE_CHARACTER}
                   </DisplayName>
                 </DisplayNameWrapper>
               </CommentDisplayName>

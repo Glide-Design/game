@@ -44,6 +44,7 @@ import { SIDE_MARGIN_PX, CoreDevices } from '../common/dimensions';
 import { FontFamily, Input } from '../common/typography';
 import { getTargetDevice } from '../state/app/selectors';
 import CommentBlock from './CommentBlock';
+import abbreviateNumber from 'xi-core/content/abbreviateNumber';
 
 const Container = styled.div`
   position: relative;
@@ -55,10 +56,10 @@ const Container = styled.div`
 `;
 
 const CommentsWrapper = styled.div`
-  // ${({ replyingTo }) => (replyingTo ? 'padding-bottom: 110px;' : 'padding-bottom: 90px;')};
-  padding-bottom: 110px;
-  min-height: 0;
+  // padding-bottom: 110px;
+  min-height: 100%;
   overflow: scroll;
+  overflow-x: hidden;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   ${({ isSmallDevice, sideMargin }) =>
@@ -304,6 +305,8 @@ class Comments extends React.Component {
       numComments = contentItem.comments || 0;
     }
 
+    numComments = 20000000;
+
     return (
       <Container isSmallDevice={isSmallDevice}>
         <NotificationContainer />
@@ -322,7 +325,7 @@ class Comments extends React.Component {
             <FormattedMessage
               id="comments.title"
               defaultMessage="{numComments} COMMENTS"
-              values={{ numComments: numComments }}
+              values={{ numComments: abbreviateNumber(numComments) }}
             />
           }
           rightButton={
@@ -358,7 +361,7 @@ class Comments extends React.Component {
             </CommentsWrapper>
           )}
         </ScrollLock>
-        <CommentContainer>
+        {/* <CommentContainer>
           {isAuthenticated ? (
             hasCommentingBlocked ? (
               <BlockedCommenting>
@@ -409,7 +412,7 @@ class Comments extends React.Component {
               <FormattedMessage id="comments.add_a_comment" defaultMessage="Add a comment" />
             </SignInCTA>
           )}
-        </CommentContainer>
+        </CommentContainer> */}
       </Container>
     );
   }

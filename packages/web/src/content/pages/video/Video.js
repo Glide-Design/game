@@ -65,6 +65,7 @@ import Tag from '../../components/Tag';
 import MoreInSeries from './MoreInSeries';
 import SecondaryCta from './SecondaryCta';
 import UpNext from './upNext';
+import Comments from '../../../comments/Comments';
 
 const SHOW_UP_NEXT_DURATION = 10;
 
@@ -199,6 +200,22 @@ const StyledTag = styled(Tag)`
 
 const StyledTitle = styled(Title)`
   margin-top: 14px;
+`;
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const LHS = styled.div`
+  flex: 1;
+`;
+
+const RHS = styled.div`
+  flex: 0 0 25%;
+  background: white;
+  height: calc(100vh - 72px);
+  border-left: 1px solid gray;
 `;
 
 class Video extends React.Component {
@@ -378,128 +395,159 @@ class Video extends React.Component {
       (isFree || isAuthenticated);
 
     return (
-      <Container>
-        <VideoContainer data-test-id="video-player-container">
-          {contentUrl ? (
-            <StyledVideoJs
-              customProgressHandler={progress => {
-                if (progress !== 0.25) {
-                  return;
+      <React.Fragment>
+        <MainContainer>
+          <LHS>
+            <Container>
+              <VideoContainer data-test-id="video-player-container">
+                {contentUrl ? (
+                  <StyledVideoJs
+                    customProgressHandler={progress => {
+                      if (progress !== 0.25) {
+                        return;
+                      }
+                      addToViewCount(contentId);
+                    }}
+                    key={`${contentId} - ${
+                      content.inventoryType
+                    }-${authenticatedAndProfileReceived}-${playerEndedReloadFlag}`}
+                    innerRef={ref => {
+                      if (ref) {
+                        const player = this.player;
+                        this.player = ref.getWrappedInstance();
+                        if (!player) {
+                          this.forceUpdate();
+                        }
+                      }
+                    }}
+                    contentForSession={content}
+                    fluid={!window.matchMedia(HelperDevices.belowMediumLandscape).matches}
+                    source={{
+                      sources: [{ src: contentUrl, type: mimeType }],
+                      ads:
+                        playerEndedReloadFlag || !advertisingUrl ? [] : [{ src: advertisingUrl }],
+                      poster: getSourcesByRatio(content.creatives, 1.77).src,
+                      textTracks: map(
+                        object => ({
+                          ...object,
+                          default:
+                            object.srclang === memberLanguage && memberLanguage !== contentLanguage,
+                        }),
+                        subtitles
+                      ),
+                    }}
+                    onUiVisibilityChanged={() => this.checkDisplayTopIcons()}
+                    onEnded={this.onEndedHandler}
+                    autoPlay={shouldAutoPlay}
+                    startTime={startTime}
+                    onProgress={this.handleProgress}
+                    contentMedia={contentMedia}
+                    accessToken={accessToken}
+                    playerLoaded={loaded}
+                    contentId={contentId}
+                    subtitles={subtitles}
+                    onPlay={this.checkEntitlementAndContentStatus}
+                  />
+                ) : (
+                  <VideoLoadingFiller>
+                    <LoaderCircularSpinner />
+                  </VideoLoadingFiller>
+                )}
+              </VideoContainer>
+              <FixedToolbarOnScrollWrapper
+                className={this.state.showTopIcons ? '' : 'hide'}
+                onMouseEnter={() =>
+                  this.setState({ mouseOverTopIcons: true }, this.checkDisplayTopIcons)
                 }
-                addToViewCount(contentId);
-              }}
-              key={`${contentId} - ${
-                content.inventoryType
-              }-${authenticatedAndProfileReceived}-${playerEndedReloadFlag}`}
-              innerRef={ref => {
-                if (ref) {
-                  const player = this.player;
-                  this.player = ref.getWrappedInstance();
-                  if (!player) {
-                    this.forceUpdate();
+                onMouseLeave={() =>
+                  this.setState({ mouseOverTopIcons: false }, this.checkDisplayTopIcons)
+                }
+                onFocus={() => null}
+              >
+                <StyledFixedToolbarOnScroll />
+              </FixedToolbarOnScrollWrapper>
+
+              {showUpNext && <UpNext contentId={contentId} />}
+
+              <PageContentInfo
+                tag={<StyledTag whiteBackground tagType={tagType} />}
+                icon={
+                  <AvatarGroup
+                    starIds={content.contributors}
+                    showName={true}
+                    onClick={playerAvatarClicked}
+                  />
+                }
+                title={
+                  <LanguageLineHeights lineHeights={LINE_HEIGHTS}>
+                    {({ lineHeight }) => (
+                      <StyledTitle lineHeight={lineHeight}>Fortnite Sample Video</StyledTitle>
+                      // <StyledTitle lineHeight={lineHeight}>{content.title}</StyledTitle>
+                    )}
+                  </LanguageLineHeights>
+                }
+                description={
+                  <StyledExpandableText
+                    linesToShow={5}
+                    text={
+                      content.description ||
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    }
+                  />
+                }
+                // description={<StyledExpandableText linesToShow={5} text={content.description || ' '} />}
+                contentId={contentId}
+                partner={partner}
+                isFree={isFree}
+                shareClicked={() => {
+                  if (this.player) {
+                    this.player.pause();
                   }
-                }
-              }}
-              contentForSession={content}
-              fluid={!window.matchMedia(HelperDevices.belowMediumLandscape).matches}
-              source={{
-                sources: [{ src: contentUrl, type: mimeType }],
-                ads: playerEndedReloadFlag || !advertisingUrl ? [] : [{ src: advertisingUrl }],
-                poster: getSourcesByRatio(content.creatives, 1.77).src,
-                textTracks: map(
-                  object => ({
-                    ...object,
-                    default:
-                      object.srclang === memberLanguage && memberLanguage !== contentLanguage,
-                  }),
-                  subtitles
-                ),
-              }}
-              onUiVisibilityChanged={() => this.checkDisplayTopIcons()}
-              onEnded={this.onEndedHandler}
-              autoPlay={shouldAutoPlay}
-              startTime={startTime}
-              onProgress={this.handleProgress}
-              contentMedia={contentMedia}
-              accessToken={accessToken}
-              playerLoaded={loaded}
-              contentId={contentId}
-              subtitles={subtitles}
-              onPlay={this.checkEntitlementAndContentStatus}
-            />
-          ) : (
-            <VideoLoadingFiller>
-              <LoaderCircularSpinner />
-            </VideoLoadingFiller>
-          )}
-        </VideoContainer>
-        <FixedToolbarOnScrollWrapper
-          className={this.state.showTopIcons ? '' : 'hide'}
-          onMouseEnter={() => this.setState({ mouseOverTopIcons: true }, this.checkDisplayTopIcons)}
-          onMouseLeave={() =>
-            this.setState({ mouseOverTopIcons: false }, this.checkDisplayTopIcons)
-          }
-          onFocus={() => null}
-        >
-          <StyledFixedToolbarOnScroll />
-        </FixedToolbarOnScrollWrapper>
-
-        {showUpNext && <UpNext contentId={contentId} />}
-
-        <PageContentInfo
-          tag={<StyledTag whiteBackground tagType={tagType} />}
-          icon={
-            <AvatarGroup
-              starIds={content.contributors}
-              showName={true}
-              onClick={playerAvatarClicked}
-            />
-          }
-          title={
-            <LanguageLineHeights lineHeights={LINE_HEIGHTS}>
-              {({ lineHeight }) => (
-                <StyledTitle lineHeight={lineHeight}>Fortnite Sample Video</StyledTitle>
-                // <StyledTitle lineHeight={lineHeight}>{content.title}</StyledTitle>
-              )}
-            </LanguageLineHeights>
-          }
-          description={
-            <StyledExpandableText
-              linesToShow={5}
-              text={
-                content.description ||
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-              }
-            />
-          }
-          // description={<StyledExpandableText linesToShow={5} text={content.description || ' '} />}
-          contentId={contentId}
-          partner={partner}
-          isFree={isFree}
-          shareClicked={() => {
-            if (this.player) {
-              this.player.pause();
-            }
-          }}
-        />
-        {loadingComplete ? (
-          <Fragment>
-            {/* GuestPass was hidden from view temporarily. Check FE-389 for more details. */}
-            {/* {contentUrl ? (
+                }}
+              />
+              {/* {loadingComplete ? ( */}
+              {/* {<Fragment>} */}
+              {/* GuestPass was hidden from view temporarily. Check FE-389 for more details. */}
+              {/* {contentUrl ? (
               <Fragment>
                 <SimpleDivider color={Grey5} withoutMargin />
                 <GuestPass contentId={contentId} />
               </Fragment>
             ) : null} */}
-            <DiscussionHighlights contentId={contentId} />
-            <SecondaryCta contentId={contentId} />
-            <Sections>
-              <MoreInSeries seriesId={seriesId} seasonId={seasonId} contentId={contentId} />
-              <MoreLikeThis contentId={contentId} />
-            </Sections>
-          </Fragment>
-        ) : null}
-      </Container>
+              {/* <DiscussionHighlights contentId={contentId} />
+                <SecondaryCta contentId={contentId} />
+                <Sections>
+                  <MoreInSeries seriesId={seriesId} seasonId={seasonId} contentId={contentId} />
+                  <MoreLikeThis contentId={contentId} />
+                </Sections>
+              </Fragment> */}
+              {/* ) : null} */}
+            </Container>
+          </LHS>
+          <RHS>
+            <Comments />
+          </RHS>
+        </MainContainer>
+        <Container>
+          {loadingComplete ? (
+            <Fragment>
+              {/* GuestPass was hidden from view temporarily. Check FE-389 for more details. */}
+              {/* {contentUrl ? (
+              <Fragment>
+                <SimpleDivider color={Grey5} withoutMargin />
+                <GuestPass contentId={contentId} />
+              </Fragment>
+            ) : null} */}
+              <DiscussionHighlights contentId={contentId} />
+              <SecondaryCta contentId={contentId} />
+              <Sections>
+                <MoreInSeries seriesId={seriesId} seasonId={seasonId} contentId={contentId} />
+                <MoreLikeThis contentId={contentId} />
+              </Sections>
+            </Fragment>
+          ) : null}
+        </Container>
+      </React.Fragment>
     );
   }
 }

@@ -31,6 +31,7 @@ import {
 import { transformAvatarUrl } from 'xi-core/utils/cloudinary';
 import { pushOverlayQueue } from 'xi-core/overlays/actions';
 import { browserIsIOSSafari } from 'xi-core/utils/browser';
+import abbreviateNumber from 'xi-core/content/abbreviateNumber';
 import ScrollLock from '../common/ScrollLock';
 import FixedToolbar from '../common/FixedToolbar';
 import Cross from '../common/icons/Cross';
@@ -44,10 +45,9 @@ import { SIDE_MARGIN_PX, CoreDevices } from '../common/dimensions';
 import { FontFamily, Input } from '../common/typography';
 import { getTargetDevice } from '../state/app/selectors';
 import CommentBlock from './CommentBlock';
-import abbreviateNumber from 'xi-core/content/abbreviateNumber';
 
 const Container = styled.div`
-  position: relative;
+  position: fixed;
   color: ${Grey85};
   background: white;
   ${({ isSmallDevice }) => (isSmallDevice ? 'padding-top: 52px;' : 'padding-top: 72px;')};
@@ -329,7 +329,7 @@ class Comments extends React.Component {
             />
           }
           rightButton={
-            isLargeDevice && (
+            /*isLargeDevice*/ false && (
               <StyledCloseButtonContainer>
                 <StyledButtonLink onClick={() => closeTheComments(history)}>
                   <Cross style={{ width: 17, height: 13 }} />

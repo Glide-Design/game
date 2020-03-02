@@ -27,6 +27,7 @@ import NavBar from '../navBar';
 import { routes, redirectToJoinRoutes, skipCookieBarRoutes } from '../App';
 import AuthenticationOverlay from '../signup/AuthenticationOverlay';
 import { getTargetDevice } from '../state/app/selectors';
+import Comments from '../comments/Comments';
 import BlockedUser from '../signup/BlockedUser';
 import SnackBar from './SnackBar';
 
@@ -36,7 +37,7 @@ const StyledNavBar = styled(NavBar)`
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  right: 25%;
   z-index: ${posFixedZIndex.navBar};
 
   @media ${HelperDevices.belowMedium}, ${CoreDevices.medium} {
@@ -135,6 +136,21 @@ const checkRouteBlacklist = history => {
   }
 };
 
+const Container = styled.div`
+  display: flex;
+`;
+
+const MainContent = styled.div`
+  flex: 1;
+`;
+
+const ChatContent = styled.div`
+  flex: 0 0 25%;
+  background: white;
+  height: 100vh;
+  border-left: 1px solid gray;
+`;
+
 class AppLayout extends React.Component {
   componentDidMount() {
     const {
@@ -197,41 +213,48 @@ class AppLayout extends React.Component {
 
     return (
       <React.Fragment>
-        <Wrapper
-          noNavBarLandscape={config.noNavBarLandscape}
-          smallDeviceMinWidth={config.smallDeviceMinWidth}
-          isMenuHidden={isMenuHidden}
-          isNotchedDevice={hasNotch()}
-        >
-          {shouldShowCookieBar ? (
-            <CookieBar device={targetDevice}>
-              <TextContainer>
-                <FormattedHTMLMessage
-                  id="layout.cookies"
-                  defaultMessage={
-                    'We store data locally to personalise your experience. Find out more <a href="{privacyLink}">here</a>.'
-                  }
-                  values={{ privacyLink }}
-                />
-              </TextContainer>
-              <ButtonContainer>
-                <Button1 onClick={() => acceptCookies()} data-test-id="accept_cookies">
-                  <FormattedMessage defaultMessage="Accept" id="layout.cookiesAccept" />
-                </Button1>
-              </ButtonContainer>
-            </CookieBar>
-          ) : null}
-          {children}
-          {!isMenuHidden ? (
-            <StyledNavBar
+        <Container>
+          <MainContent>
+            <Wrapper
               noNavBarLandscape={config.noNavBarLandscape}
+              smallDeviceMinWidth={config.smallDeviceMinWidth}
+              isMenuHidden={isMenuHidden}
               isNotchedDevice={hasNotch()}
-            />
-          ) : null}
-          <OverlaysQueueController />
-          <CardAnimationsController />
-          <SnackBar />
-        </Wrapper>
+            >
+              {shouldShowCookieBar ? (
+                <CookieBar device={targetDevice}>
+                  <TextContainer>
+                    <FormattedHTMLMessage
+                      id="layout.cookies"
+                      defaultMessage={
+                        'We store data locally to personalise your experience. Find out more <a href="{privacyLink}">here</a>.'
+                      }
+                      values={{ privacyLink }}
+                    />
+                  </TextContainer>
+                  <ButtonContainer>
+                    <Button1 onClick={() => acceptCookies()} data-test-id="accept_cookies">
+                      <FormattedMessage defaultMessage="Accept" id="layout.cookiesAccept" />
+                    </Button1>
+                  </ButtonContainer>
+                </CookieBar>
+              ) : null}
+              {children}
+              {!isMenuHidden ? (
+                <StyledNavBar
+                  noNavBarLandscape={config.noNavBarLandscape}
+                  isNotchedDevice={hasNotch()}
+                />
+              ) : null}
+              <OverlaysQueueController />
+              <CardAnimationsController />
+              <SnackBar />
+            </Wrapper>
+          </MainContent>
+          <ChatContent>
+            <Comments />
+          </ChatContent>
+        </Container>
         <BlockedUser />
         <AuthenticationOverlay key={'authoverlay'} />
       </React.Fragment>

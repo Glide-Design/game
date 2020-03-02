@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+    commands:
+      - npm install yarn -g
+      - yarn global add parcel-bundler
+  build:
+    commands:
+      - yarn
+      # export each variable in .env
+      #- set -a
+      #- . "env/${env}.env"
+      #- set +a
+      - yarn build
+  post_build:
+    commands:
+      - echo "******** Updating your website at s3 bucket ********"
+      - echo "$editbucket"
+      - aws s3 cp "./dist/" "s3://${editbucket}/" --recursive
+      #- aws cloudfront create-invalidation --distribution-id "${editcf}" --paths "/*"

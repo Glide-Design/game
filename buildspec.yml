@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
       - npm install yarn -g
-      - yarn global add parcel-bundler
+      - yarn global add webpack
   build:
     commands:
       - yarn
@@ -15,10 +15,10 @@ phases:
       #- set -a
       #- . "env/${env}.env"
       #- set +a
-      - yarn build
+      - yarn workspace web build
   post_build:
     commands:
       - echo "******** Updating your website at s3 bucket ********"
       - echo "$editbucket"
-      - aws s3 cp "./dist/" "s3://${editbucket}/" --recursive
+      - aws s3 cp "./packages/web/build/" "s3://${editbucket}/" --recursive
       #- aws cloudfront create-invalidation --distribution-id "${editcf}" --paths "/*"

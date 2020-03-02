@@ -1,0 +1,71 @@
+[
+  {
+    "externalId": "a55a0564-7893-11e8-8bf5-ce6f87561878",
+    "createdOn": 1529943687000,
+    "name": "MULTIPACK",
+    "description": "Starter pack",
+    "type": "CONTENT",
+    "offers": [
+      {
+        "externalId": "ab4cd73e-7894-11e8-8bf5-8c6f87561878",
+        "createdOn": 1529943885000,
+        "name": "5 Pack",
+        "offerCode": "5PACK",
+        "description": "5 Pack",
+        "eligibleForPromotion": true,
+        "prices": [],
+        "promotions": [],
+        "offerFeatures": []
+      }
+    ]
+  },
+  {
+    "externalId": "f88a0564-7893-11e8-8bf5-8c6f87561878",
+    "createdOn": 1529943687000,
+    "name": "ELEVENSTREAM",
+    "description": "Unlimited Access and Full HD Streaming",
+    "type": "CONTENT",
+    "offers": [
+      {
+        "externalId": "4e4cd73e-7894-11e8-8bf5-8c6f87561878",
+        "createdOn": 1529943885000,
+        "name": "Yearly",
+        "offerCode": "ELEVENYEARLY",
+        "description": "Yearly Recurring",
+        "externalReference": "PPR00075",
+        "eligibleForPromotion": true,
+        "prices": [
+          {
+            "iso4127CurrencyCode": "GBP",
+            "name": "OSC Price Plan",
+            "price": 59.99,
+            "priceExternalReference": "11A3E1404D5549F9B282C30D5A5E1B98",
+            "platform": { "providerCode": "CRM" }
+          }
+        ],
+        "promotions": [],
+        "offerFeatures": []
+      },
+      {
+        "externalId": "6e4cd73e-7894-11e8-8bf5-8c6f87561878",
+        "createdOn": 1529943885000,
+        "name": "Monthly",
+        "offerCode": "ELEVENMONTHLY",
+        "description": "Monthly Recurring",
+        "externalReference": "PPR00073",
+        "eligibleForPromotion": true,
+        "prices": [
+          {
+            "iso4127CurrencyCode": "GBP",
+            "name": "OSC Price Plan",
+            "price": 6.99,
+            "priceExternalReference": "11A3E1404D5549F9B282C30D5A5E1B98",
+            "platform": { "providerCode": "CRM" }
+          }
+        ],
+        "promotions": [],
+        "offerFeatures": [{ "name": "HD", "description": "HD quality" }]
+      }
+    ]
+  }
+]

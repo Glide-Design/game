@@ -1,0 +1,261 @@
+[
+  {
+    "createdOn": 1529943885000,
+    "description": "Yearly Recurring",
+    "eligibleForPromotion": true,
+    "externalId": "4e4cd73e-7894-11e8-8bf5-8c6f87561878",
+    "externalReference": "ELEVENYEARLY",
+    "name": "Yearly",
+    "offerCode": "ELEVENYEARLY",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": []
+  },
+  {
+    "createdOn": 1529943885000,
+    "description": "Monthly Recurring",
+    "eligibleForPromotion": true,
+    "externalId": "6e4cd73e-7894-11e8-8bf5-8c6f87561878",
+    "externalReference": "ELEVENMONTHLY",
+    "name": "Monthly",
+    "offerCode": "ELEVENMONTHLY",
+    "offerFeatures": [{ "description": "HD quality", "name": "HD" }],
+    "prices": [],
+    "promotions": []
+  },
+  {
+    "createdOn": 1529943885000,
+    "description": "5 Pack",
+    "eligibleForPromotion": true,
+    "externalId": "ab4cd73e-7894-11e8-8bf5-8c6f87561878",
+    "externalReference": "5PACK",
+    "name": "5 Pack",
+    "offerCode": "5PACK",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": []
+  },
+  {
+    "createdOn": 1531827553000,
+    "description": "new_offer_description_20180717_82077",
+    "eligibleForPromotion": true,
+    "externalId": "583d9f63-a1ec-404b-a361-0e2e5f0ab61c",
+    "modifiedOn": 1531844092000,
+    "name": "new_offer_name_20180717_82077",
+    "offerCode": "OFFERCODE_20180717_82077",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": [
+      {
+        "coupon": "coupon_name_20180717_82077_2",
+        "description": "coupon_description_20180717_82077_2",
+        "endDate": 1563624973000,
+        "externalId": "28d0a329-ced0-48e3-91f6-ed73fda042b5",
+        "fixedPrice": 10,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180717_82077_2",
+        "startDate": 1531397773000
+      },
+      {
+        "coupon": "coupon_name_20180717_82077",
+        "description": "coupon_description_20180717_82077",
+        "endDate": 1563624973000,
+        "externalId": "964e91b3-9428-4bfc-a56a-a684c22a7658",
+        "fixedPrice": 15,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180717_82077",
+        "startDate": 1531397773000
+      }
+    ]
+  },
+  {
+    "createdOn": 1531925515000,
+    "description": "offer_description_20180718_45496",
+    "eligibleForPromotion": true,
+    "externalId": "82921b17-fd8d-4f26-be90-771c3900b0d3",
+    "modifiedOn": 1531925515000,
+    "name": "offer_name_20180718_45496",
+    "offerCode": "OFFERCODE_20180718_45496",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": [
+      {
+        "coupon": "coupon_name_20180718_45496",
+        "description": "coupon_description_20180718_45496",
+        "endDate": 1563624973000,
+        "externalId": "f45f2510-0fb8-4dd1-a424-c0cf3b2d4806",
+        "fixedPrice": 15,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180718_45496",
+        "startDate": 1531397773000
+      },
+      {
+        "coupon": "coupon_name_20180718_45496_2",
+        "description": "coupon_description_20180718_45496_2",
+        "endDate": 1563624973000,
+        "externalId": "c92a05a8-5a4d-429a-bc71-fee3fb93b4be",
+        "fixedPrice": 10,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180718_45496_2",
+        "startDate": 1531397773000
+      }
+    ]
+  },
+  {
+    "createdOn": 1531985389000,
+    "description": "new_offer_description_20180719_36201",
+    "eligibleForPromotion": true,
+    "externalId": "161669cd-03a0-4962-8dad-715359d8718c",
+    "modifiedOn": 1532099067000,
+    "name": "new_offer_name_20180719_36201",
+    "offerCode": "OFFERCODE_20180719_36201",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": [
+      {
+        "coupon": "coupon_name_20180719_36201_2",
+        "description": "coupon_description_20180719_36201_2",
+        "endDate": 1563624973000,
+        "externalId": "617d4318-8018-402b-975b-a4ac99143def",
+        "fixedPrice": 10,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180719_36201_2",
+        "startDate": 1531397773000
+      },
+      {
+        "coupon": "coupon_name_20180719_36201",
+        "description": "coupon_description_20180719_36201",
+        "endDate": 1563624973000,
+        "externalId": "d1b91588-09b6-4117-9f71-dca7197a3bfa",
+        "fixedPrice": 15,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180719_36201",
+        "startDate": 1531397773000
+      }
+    ]
+  },
+  {
+    "createdOn": 1532530116000,
+    "description": "new_offer_description_20180725_45565",
+    "eligibleForPromotion": true,
+    "externalId": "8bdd0cd0-81d6-4c83-9c65-3d6a228dd6b2",
+    "modifiedOn": 1532530118000,
+    "name": "new_offer_name_20180725_45565",
+    "offerCode": "OFFERCODE_20180725_45565",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": [
+      {
+        "coupon": "coupon_name_20180725_45565",
+        "description": "coupon_description_20180725_45565",
+        "endDate": 1563624973000,
+        "externalId": "1bbf3e75-7a43-4fe3-82b9-e51c008d1b40",
+        "fixedPrice": 15,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180725_45565",
+        "startDate": 1531397773000
+      },
+      {
+        "coupon": "coupon_name_20180725_45565_2",
+        "description": "coupon_description_20180725_45565_2",
+        "endDate": 1563624973000,
+        "externalId": "98199628-b0c2-47cc-a607-2df8b75bd635",
+        "fixedPrice": 10,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180725_45565_2",
+        "startDate": 1531397773000
+      }
+    ]
+  },
+  {
+    "createdOn": 1534262120000,
+    "description": "new_offer_description_20180814_44355",
+    "eligibleForPromotion": true,
+    "externalId": "ab6b94c0-9faa-4df8-a5ed-fe7a536db491",
+    "modifiedOn": 1534262122000,
+    "name": "new_offer_name_20180814_44355",
+    "offerCode": "OFFERCODE_20180814_44355",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": [
+      {
+        "coupon": "coupon_name_20180814_44355",
+        "description": "coupon_description_20180814_44355",
+        "endDate": 1563624973000,
+        "externalId": "adfd185f-2137-480c-8d7e-fe381424f524",
+        "fixedPrice": 10,
+        "iso4127CurrencyCode": "EUR",
+        "name": "coupon_name_20180814_44355",
+        "startDate": 1531397773000
+      }
+    ]
+  },
+  {
+    "createdOn": 1534319111000,
+    "description": "new_offer_description_20180815_90107",
+    "eligibleForPromotion": true,
+    "externalId": "e833cc96-6fed-4b41-b3e6-23abfd82e675",
+    "modifiedOn": 1534319112000,
+    "name": "new_offer_name_20180815_90107",
+    "offerCode": "OFFERCODE_20180815_90107",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": [
+      {
+        "coupon": "coupon_name_20180815_90107",
+        "description": "coupon_description_20180815_90107",
+        "endDate": 1563624973000,
+        "externalId": "bb65b7a5-4d12-4278-977d-2514f14d4e56",
+        "fixedPrice": 10,
+        "iso4127CurrencyCode": "EUR",
+        "name": "coupon_name_20180815_90107",
+        "startDate": 1531397773000
+      }
+    ]
+  },
+  {
+    "createdOn": 1534468541000,
+    "description": "new_offer_description_20180817_19792",
+    "eligibleForPromotion": true,
+    "externalId": "6e2e0896-4878-4821-8e57-e53dcfc50c74",
+    "modifiedOn": 1534468544000,
+    "name": "new_offer_name_20180817_19792",
+    "offerCode": "OFFERCODE_20180817_19792",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": [
+      {
+        "coupon": "coupon_name_20180817_19792_2",
+        "description": "coupon_description_20180817_19792_2",
+        "endDate": 1563624973000,
+        "externalId": "49e8dcdb-2e87-4856-8354-02fd2c416654",
+        "fixedPrice": 10,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180817_19792_2",
+        "startDate": 1531397773000
+      },
+      {
+        "coupon": "coupon_name_20180817_19792",
+        "description": "coupon_description_20180817_19792",
+        "endDate": 1563624973000,
+        "externalId": "b677831b-3fc6-469c-99a5-894253e2fd05",
+        "fixedPrice": 15,
+        "iso4127CurrencyCode": "EUR",
+        "name": "name_20180817_19792",
+        "startDate": 1531397773000
+      }
+    ]
+  },
+  {
+    "createdOn": 1534468541000,
+    "description": "offer_description_20180817_19792",
+    "eligibleForPromotion": true,
+    "externalId": "adbb8205-64d4-4537-b9f7-74449a5aad54",
+    "modifiedOn": 1534468541000,
+    "name": "offer_name_20180817_19792",
+    "offerCode": "OFFERCODE_20180817_19792",
+    "offerFeatures": [],
+    "prices": [],
+    "promotions": []
+  }
+]

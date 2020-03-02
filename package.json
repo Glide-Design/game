@@ -1,0 +1,91 @@
+{
+  "private": true,
+  "name": "xi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/OurStarClub/web",
+  "author": "Jacob Parker <jacobparker1992@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint packages/web/src packages/app/src packages/xi-core packages/corp --ignore-pattern node_modules",
+    "lint-fix": "eslint packages/web/src packages/app/src packages/xi-core packages/corp --fix --ignore-pattern node_modules",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "e2e": "yarn workspace web e2e",
+    "translate": "yarn workspace xi-core translate",
+    "build": "yarn workspace web build",
+    "lint-staged": "./lint-staged.sh",
+    "storybook": "yarn workspace web storybook"
+  },
+  "pre-commit": "lint-staged",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**/xi-core"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.2",
+    "babel-eslint": "8",
+    "babel-jest": "23.6.0",
+    "babel-preset-env": "1.6.1",
+    "codeceptjs": "1.4.6",
+    "eslint": "4.19.1",
+    "eslint-config-react-app": "2.1.0",
+    "eslint-plugin-flowtype": "2.50.3",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-react": "7.12.4",
+    "jest": "23.6.0",
+    "jest-cli": "23.6.0",
+    "jest-date-mock": "1.0.7",
+    "pre-commit": "1.2.2",
+    "prettier": "1.16.0",
+    "webdriverio": "4.14.2"
+  },
+  "resolutions": {
+    "@babel/plugin-transform-regenerator": "7.4.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFiles": [
+      "jest-date-mock"
+    ],
+    "projects": [
+      {
+        "displayName": "app",
+        "rootDir": "<rootDir>/packages/app",
+        "preset": "react-native",
+        "setupFiles": [
+          "<rootDir>/src/setupTests.js"
+        ]
+      },
+      {
+        "displayName": "web",
+        "rootDir": "<rootDir>/packages/web",
+        "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+      },
+      {
+        "displayName": "core",
+        "rootDir": "<rootDir>/packages/xi-core",
+        "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
+      },
+      {
+        "displayName": "corp",
+        "rootDir": "<rootDir>/packages/corp"
+      }
+    ],
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/THEOplayerSDK.framework/**",
+      "!**/build/**",
+      "!**/public/THEOPlayer/**"
+    ]
+  }
+}

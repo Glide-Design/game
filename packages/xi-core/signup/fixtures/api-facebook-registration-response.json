@@ -1,0 +1,14 @@
+{
+  "access_token": "eyJraWQiOiIxIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiJiNjU2OTQ2OS0xMWNhLTRmYjItYjg4OS02NDg3MWNjZGMwYWIiLCJpZGVudGl0eUlkIjoidGVzdF9qenNiZWZpX3VzZXJvbmVAdGZibncubmV0IiwiaXNOZXciOnRydWUsInR5cGUiOiJyZWdpc3RlcmVkIiwiZmFjZWJvb2tNZW1iZXJEYXRhIjp7ImlkIjoiMTAxNTQwMjM3NDY5NTI1IiwiZmlyc3RfbmFtZSI6IlRlc3QiLCJsYXN0X25hbWUiOiJVc2VyT25lIiwiZW1haWwiOiJ0ZXN0X2p6c2JlZmlfdXNlcm9uZUB0ZmJudy5uZXQiLCJuYW1lIjoiVGVzdCBVc2VyT25lIiwiZ2VuZGVyIjoibWFsZSIsImJpcnRoZGF5IjpudWxsLCJzcG9ydHMiOm51bGwsImxvY2F0aW9uIjpudWxsLCJhdmF0YXJVcmwiOiJodHRwczovL2dyYXBoLmZhY2Vib29rLmNvbS8xMDE1NDAyMzc0Njk1MjUvcGljdHVyZSJ9LCJmYWNlYm9va1Rva2VuIjoiRUFBWU5nREZyWUcwQkFIeHg3YzNFeUM2TE5lZlpDaURGWkNkbFExM3V2bzQzWkNQTGVZejVFSGVvckJlM0o5VXVHb2JrWFlkd2FpTnJVRGxGejQ4ME9nZ2FLcUNyREhPRFBzNWxoNmY2WVJ1d3R4UHBjeFlCTktla0pCRDdIaEIyVG93WkNkVk9IMnd3UE9yRXc5YUJNeU15VWpWWDhBVWdvSmV4elRHN0laQkxBMlhaQWhDZkFEOHFDTmpJZ3RmeFpCMWlZdU96QlMwSnpZVEpqVFFIMWpaQSIsImV4cCI6MTUzNjA3MjMyNn0.ru3IkpdXujYeaMuITxZi3F3tRC3xKah9xZyHAS2fBf0qAE89soaPaQu-Ci94ip7atKvKfKzLy8TPQ-gKSN3I1FRK4lDmmexfjYSaFndeFOKgcQdVT1JqNkICx3eZQcc6vQNV4lNwQ0_xoU-hWBDrIscCbbG0GLTKiTsdHSfi9f09ThnRvaAkDzp3OSo0l2dODuqVPoQmdxr80B6syPBC0LHIlHD8dibKO17jfA155oBHoj7It6OSkWBeVuzwsWgAiFX4_Fmb7UXGANBHGPgl5Qw4FeEdNpEoZGijzqpy2QoOJclT1QbSkfXPpHFEYOhylKE4vVsgL-S3hZieP8JKkA",
+  "externalId": "b6569469-11ca-4fb2-b889-64871ccdc0ab",
+  "isNew": true,
+  "memberData": {
+    "id": "101540237469525",
+    "first_name": "Test",
+    "last_name": "User",
+    "email": "test_jzsbefi_user@tfbnw.net",
+    "name": "Test User",
+    "gender": "male",
+    "avatarUrl": "https://graph.facebook.com/101540237469525/picture"
+  }
+}

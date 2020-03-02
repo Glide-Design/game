@@ -1,0 +1,27 @@
+{
+  "name": "OTRO",
+  "short_name": "OTRO",
+  "icons": [
+    {
+      "src": "/images/favicon/icon_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/favicon/icon_310x310.png",
+      "sizes": "310x310",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/favicon/icon_1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "{{display}}",
+  "scope": "/",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "gcm_sender_id": "{{firebaseSenderId}}"
+}

@@ -1,0 +1,6 @@
+/packages/web/public/**/*.js
+/packages/corp/src/public/*
+/packages/corp/src/views/*
+*aws-sdk*
+*theoplayer*
+/packages/app/ios/app/*

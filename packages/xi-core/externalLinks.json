@@ -1,0 +1,11 @@
+{
+  "signUpHelp": "https://otro.com/help#using",
+  "termsConditions": "http://otro.com/terms-of-use",
+  "privacyPolicy": "http://otro.com/privacy-policy",
+  "help": "https://otro.com/help",
+  "helpSSO": "https://otro.zendesk.com/access/jwt",
+  "communityGuidelines": "https://www.otro.com/pk/terms-of-use#community-guidelines",
+  "manageAppleSubscription": "https://apps.apple.com/account/subscriptions",
+  "manageGoogleSubscription": "https://play.google.com/store/account/subscriptions",
+  "appLanding": "https://otro.onelink.me/32nO"
+}

@@ -1,0 +1,23 @@
+{
+  "email": "test_jzsbefi_user@tfbnw.net",
+  "externalId": "b6569469-11ca-4fb2-b889-64871ccdc0ab",
+  "secondaryExternalIds": [],
+  "avatarUrl": "https://graph.facebook.com/101540237469525/picture?type=square&width=400",
+  "forename": "Test",
+  "surname": "User",
+  "nickname": "TestUser",
+  "gender": "male",
+  "location": {},
+  "friends": [],
+  "memberIdentities": [
+    {
+      "identityId": "101540237469525",
+      "identityType": "FACEBOOK"
+    },
+    {
+      "identityId": "test_jzsbefi_userone@tfbnw.net",
+      "identityType": "EMAIL"
+    }
+  ],
+  "language": "EN"
+}

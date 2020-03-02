@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Do not delete this Google site verification -->
+  <meta name="google-site-verification" content="lbjrotYSfnb3EwtlelzxQv7Z3fH5W7fTHWfUBF9BVBk" />
+
+  <!-- <meta name="apple-mobile-web-app-title" content="Otro"> -->
+  <meta name="application-name" content="OTRO">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml">
+  <meta name="apple-mobile-web-app-capable" content="no">
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+
+  <link rel="apple-touch-icon" href="/images/favicon/icon_192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/icon_180x180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/images/favicon/icon_167x167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/icon_152x152.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/icon_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/icon_16x16.png">
+  <!-- <link rel="mask-icon" href="/images/favicon/icon_16.svg" color="#000000"> -->
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+
+  <!--link href="/images/favicon/splash_2048x2732.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+  <link href="/images/favicon/splash_1668x2224.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+  <link href="/images/favicon/splash_1536x2048.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+  <link href="/images/favicon/splash_1125x2436.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+  <link href="/images/favicon/splash_1242x2208.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+  <link href="/images/favicon/splash_750x1334.png" sizes="750x1334" rel="apple-touch-startup-image" />
+  <link href="/images/favicon/splash_640x1136.png" sizes="640x1136" rel="apple-touch-startup-image" /-->
+
+  <link rel="preload" href="/fonts/GT-America-Compressed-Bold-2.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/GT-America-Standard-Regular-2.woff2" as="font" type="font/woff2" crossorigin>
+
+  <meta name="description" content="{{description}}"/>
+  <meta name="thumbnail" content="{{thumbnail}}" />
+
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{description}}" />
+  <!--<meta property="og:video" content="">-->
+  <meta property="og:url" content="{{url}}" />
+  <meta property="og:image" content="{{imageUrl}}" />
+  <meta property="og:image:url" content="{{imageUrl}}" />
+  <meta property="og:image:width" content="{{imageWidth}}" />
+  <meta property="og:image:height" content="{{imageHeight}}" />
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- <meta name="twitter:site" content="@ourstarclub"> -->
+  <!-- <meta name="twitter:creator" content="@DavidBeckham"> -->
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{imageUrl}}">
+
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>{{title}}</title>
+  <style>
+    @font-face {
+      font-family: 'GT-America-Bold';
+      src: url('/fonts/GT-America-Compressed-Bold-2.woff2') format('woff2'),
+        url('/fonts/GT-America-Compressed-Bold-2.woff') format('woff'),
+        url('/fonts/GT-America-Compressed-Bold-2.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'GT-America';
+      src: url('/fonts/GT-America-Standard-Regular-2.woff2') format('woff2'),
+        url('/fonts/GT-America-Standard-Regular-2.woff') format('woff'),
+        url('/fonts/GT-America-Standard-Regular-2.otf') format('opentype');
+    }
+    html {
+      background: black;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: white;
+      font-family: 'GT-America', sans-serif;
+      font-weight: normal;
+      font-size: 14px;
+    }
+
+    input,
+    button {
+      font: inherit;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'GT-America-Bold', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src=https://cdn.ravenjs.com/3.24.0/raven.min.js crossorigin=anonymous></script>
+
+  <link href="%PUBLIC_URL%/VideoJSPlayer/ui.css" rel="stylesheet" />
+  <link href="%PUBLIC_URL%/VideoJSPlayer/customSkin.css" rel="stylesheet" />
+
+  <script>
+    document.addEventListener('deviceready', function () {
+      /* global StatusBar */
+      StatusBar.backgroundColorByHexString('#FF0000');
+    });
+  </script>
+  <script>
+    var ravenVars;
+    {{{ravenVars}}}    
+  </script>
+  <script>
+    var envVars;
+    {{{envVars}}}
+  </script>
+  <script>
+    var is404;
+    {{{is404}}}
+
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      var results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    try {
+      var _accessTokenFromQuery = getUrlParameter('VIPAccessToken');
+      if(_accessTokenFromQuery && !localStorage.getItem('accessToken')) {
+        localStorage.setItem('accessToken', _accessTokenFromQuery);
+        var _refreshTokenFromQuery = getUrlParameter('VIPRefreshToken');
+        if(_refreshTokenFromQuery) {
+          localStorage.setItem('refreshToken', _refreshTokenFromQuery);
+        }
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  </script>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+</body>
+
+</html>

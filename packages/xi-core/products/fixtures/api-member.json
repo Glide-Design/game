@@ -1,0 +1,11 @@
+{
+  "email": "clarkie+123@tojs.io",
+  "externalId": "a2fc768d-0355-4a6e-baf6-6586e1906360",
+  "secondaryExternalIds": [],
+  "forename": "asdfasdf",
+  "surname": "asdfasdfadf",
+  "nickname": "asdfj334234234",
+  "birthday": "1927-04-06T00:00:00.000+0000",
+  "memberIdentities": [{ "identityId": "clarkie+123@tojs.io", "identityType": "EMAIL" }],
+  "language": "EN"
+}

@@ -1,0 +1,87 @@
+{
+  "content": [
+    {
+      "externalId": "discoveryHero1",
+      "theme": {
+        "displayFormat": "HERO"
+      }
+    },
+    {
+      "externalId": "discoveryOtroIsHere",
+      "name": "#OTROISHERES",
+      "theme": {
+        "fgColour": "#AAAAAA",
+        "displayFormat": "PORTRAITLIST"
+      },
+      "creatives": [
+        {
+          "mediaUsageType": "Artwork",
+          "width": 1062,
+          "height": 1062,
+          "format": "jpg",
+          "media": [
+            {
+              "url": "/image/upload/v1546072956/Jerome%20Boateng/Social/pvmfpelbojrdmt5dodsf.jpg",
+              "clientPlaybackUrl": "https://asset.otro.com",
+              "width": 1062,
+              "height": 1062,
+              "mediaUsageType": "Artwork",
+              "mediaType": "Image"
+            },
+            {
+              "url": "https://res.cloudinary.com/otro-content/image/upload/c_scale,w_321/v1/Jerome%20Boateng/Social/pvmfpelbojrdmt5dodsf.jpg",
+              "width": 321,
+              "height": 321,
+              "mediaUsageType": "Artwork",
+              "mediaType": "Image"
+            },
+            {
+              "url": "https://res.cloudinary.com/otro-content/image/upload/c_scale,w_759/v1/Jerome%20Boateng/Social/pvmfpelbojrdmt5dodsf.jpg",
+              "width": 759,
+              "height": 759,
+              "mediaUsageType": "Artwork",
+              "mediaType": "Image"
+            },
+            {
+              "url": "https://res.cloudinary.com/otro-content/image/upload/c_scale,w_1000/v1/Jerome%20Boateng/Social/pvmfpelbojrdmt5dodsf.jpg",
+              "width": 1000,
+              "height": 1000,
+              "mediaUsageType": "Artwork",
+              "mediaType": "Image"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "discoverySeries",
+      "name": "Series",
+      "theme": {
+        "fgColour": "#FFFFFF",
+        "bgColour": "#232323",
+        "svgBackground": "BLACK",
+        "displayFormat": "PORTRAITLIST"
+      }
+    },
+    {
+      "externalId": "discoveryOffThePitch",
+      "name": "Off The Pitch",
+      "theme": {
+        "name": "GREEN",
+        "fgColour": "#232323",
+        "bgColour": "#82FF01",
+        "svgBackground": "GREEN",
+        "displayFormat": "PORTRAITLIST"
+      }
+    },
+    {
+      "externalId": "discoveryEditorsPick",
+      "name": "EDITORS PICK",
+      "theme": {
+        "fgColour": "#232323",
+        "bgColour": "#F2F2F2",
+        "displayFormat": "PORTRAITLIST"
+      }
+    }
+  ]
+}

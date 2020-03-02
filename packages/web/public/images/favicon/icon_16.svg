@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>favicon_16pt</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="favicon_16pt">
+            <rect id="Rectangle" fill="#000000" fill-rule="nonzero" x="0" y="0" width="16" height="16"></rect>
+            <path d="M8.07029296,3.5 C5.54638469,3.5 3.5,5.51654158 3.5,8.00364286 C3.5,10.4910774 5.54638469,12.5072857 8.07029296,12.5072857 C10.5945394,12.5072857 12.6405859,10.4910774 12.6405859,8.00364286 C12.6405859,5.51654158 10.5945394,3.5 8.07029296,3.5 M8.07029296,5.51820787 C9.46092821,5.51820787 10.5925103,6.63328771 10.5925103,8.00364286 C10.5925103,9.373998 9.46092821,10.4890778 8.07029296,10.4890778 C6.67965772,10.4890778 5.54807564,9.373998 5.54807564,8.00364286 C5.54807564,6.63328771 6.67965772,5.51820787 8.07029296,5.51820787" id="Fill-2" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

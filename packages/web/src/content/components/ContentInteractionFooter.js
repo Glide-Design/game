@@ -214,7 +214,7 @@ class ContentInteractionFooter extends React.Component {
 
     return (
       <ContentInteraction className={className} inset={inset}>
-        {!hideComments && (
+        {/* {!hideComments && (
           <InteractionIcon
             inset={inset}
             text={abbreviateNumber(numComments)}
@@ -232,7 +232,7 @@ class ContentInteractionFooter extends React.Component {
             }
             testId="open-content-comments"
           />
-        )}
+        )} */}
         {!hideLikes && (
           <InteractionIcon
             inset={inset}

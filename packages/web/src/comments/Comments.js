@@ -361,7 +361,7 @@ class Comments extends React.Component {
             </CommentsWrapper>
           )}
         </ScrollLock>
-        {/* <CommentContainer>
+        <CommentContainer>
           {isAuthenticated ? (
             hasCommentingBlocked ? (
               <BlockedCommenting>
@@ -412,7 +412,7 @@ class Comments extends React.Component {
               <FormattedMessage id="comments.add_a_comment" defaultMessage="Add a comment" />
             </SignInCTA>
           )}
-        </CommentContainer> */}
+        </CommentContainer>
       </Container>
     );
   }

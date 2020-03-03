@@ -27,9 +27,9 @@ export const getCommentHighlightsByContentId = state => contentId => {
   return results ? results.filter(comment => !comment.importantReply && !comment.removed) : [];
 };
 
-export const getCommentsByContentId = state => contentId => {
-  let results = get(`comments.${contentId}`, state);
-  return results ? results.filter(comment => comment.parent === 0) : [];
+export const getCommentsByContentId = state => (contentId, time) => {
+  let results = get(`comments.${contentId}.${time}`, state);
+  return results; // ? results.filter(comment => comment.parent === 0) : [];
 };
 
 export const getRepliesByContentIdAndCommentId = state => (contentId, commentId) => {
@@ -112,12 +112,13 @@ export const getPinnedComment = state => contentId => {
 export const getImportantRepliesByContentIdAndCommentId = state => (
   commentId,
   contentId,
-  discussionHighlights = false
+  discussionHighlights = false,
+  time
 ) => {
   let results = {};
 
   if (!discussionHighlights) {
-    results = get(`comments.${contentId}`, state);
+    results = get(`comments.${contentId}.${time}`, state);
   } else {
     results = get(`comments.commentHighlights.${contentId}`, state);
   }

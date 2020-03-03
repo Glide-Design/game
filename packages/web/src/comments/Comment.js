@@ -665,6 +665,7 @@ class Comment extends React.Component {
               nextImportantReplyId={
                 nextImportantReplyId ? nextImportantReplyId : PLACEHOLDERS.NEXT_REPLY_ID
               }
+              time={this.props.time}
             />
           </CommentChildren>
         ) : null}
@@ -688,7 +689,7 @@ class Comment extends React.Component {
   }
 }
 
-const mapStateToProps = (state, { comment, contentId, discussionHighlights = false }) => {
+const mapStateToProps = (state, { comment, contentId, discussionHighlights = false, time }) => {
   return {
     isAuthenticated: isAuthenticated(state),
     pinnedCommentId: getPinnedComment(state)(contentId),
@@ -696,7 +697,8 @@ const mapStateToProps = (state, { comment, contentId, discussionHighlights = fal
     importantReplies: getImportantRepliesByContentIdAndCommentId(state)(
       comment.externalId,
       contentId,
-      discussionHighlights
+      discussionHighlights,
+      time
     ),
   };
 };

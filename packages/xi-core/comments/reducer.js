@@ -27,6 +27,10 @@ import {
   PIN_COMMENT,
   UNPIN_COMMENT,
 } from './actions';
+import _mockComments1 from './_mockComments1';
+import _mockComments2 from './_mockComments2';
+
+const testComments = { '0': _mockComments1, '2000': _mockComments2, '4000': _mockComments1 };
 
 const getInitials = comment => {
   if (get(['forename', 0], comment) && get(['surname', 0], comment)) {
@@ -58,7 +62,12 @@ const getDisplayName = comment => {
   return '';
 };
 
-export const comments = (state = {}, action) => {
+export const comments = (
+  state = {
+    test: testComments,
+  },
+  action
+) => {
   switch (action.type) {
     case FETCH_COMMENTS_HIGHLIGHTS_SUCCESS:
       let comments = getOr([], `commentHighlights.${action.contentId}`, state);
@@ -239,7 +248,7 @@ export const comments = (state = {}, action) => {
       return set(`${action.contentId}`, nonDeletedComments, state);
 
     case CLEAR_COMMENTS_FOR_CONTENT:
-      return set(`${action.contentId}`, [], state);
+      return set(`${action.contentId}`, testComments, state); //[], state);
     case LOADING_COMMENTS_START:
       return action.loadType
         ? set(`loading.${action.contentId}.${action.parent}.${action.loadType}`, true, state)

@@ -179,6 +179,7 @@ class Comments extends React.Component {
   state = {
     newComment: '',
     isTextAreaFocused: false,
+    time: 0,
   };
   currentContentId = null;
   textAreaRef = React.createRef();
@@ -201,6 +202,13 @@ class Comments extends React.Component {
     if (focusTextArea && !browserIsIOSSafari) {
       this.focusTextArea();
     }
+
+    setTimeout(() => {
+      this.setState({ time: 2000 });
+    }, 2000);
+    setTimeout(() => {
+      this.setState({ time: 4000 });
+    }, 4000);
   }
 
   componentDidUpdate() {
@@ -352,6 +360,7 @@ class Comments extends React.Component {
                 contentId={contentId}
                 requestAction={fetchCommentsForContent}
                 responseSelector={getCommentsByContentId}
+                time={this.state.time}
                 itemsPerPage={15}
                 parentId={0}
                 focusTextArea={this.focusTextArea}

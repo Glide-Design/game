@@ -252,7 +252,7 @@ class AppLayout extends React.Component {
             </Wrapper>
           </MainContent>
           <ChatContent>
-            <Comments />
+            <Comments contentId="test" />
           </ChatContent>
         </Container>
         <BlockedUser />

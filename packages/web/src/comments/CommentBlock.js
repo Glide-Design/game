@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, includes } from 'lodash/fp';
 import { FormattedMessage } from 'react-intl';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 // import withRequest from 'xi-core/withRequest';
 import { isLoading, REPLIES_LOAD_TYPE, getCommentsByContentId } from 'xi-core/comments/selectors';
 import styled from 'styled-components';
@@ -202,13 +203,21 @@ class CommentBlock extends React.Component {
         <Wrapper hidden={hidden}>
           {comments.map(comment => {
             return comment.externalId !== replyId ? (
-              <Comment
-                key={comment.externalId}
-                comment={comment}
-                contentId={contentId}
-                focusTextArea={focusTextArea}
-                time={this.props.time}
-              />
+              <ReactCSSTransitionGroup
+                transitionName="example"
+                transitionAppear={true}
+                transitionAppearTimeout={1500}
+                transitionEnter={true}
+                transitionLeave={true}
+              >
+                <Comment
+                  key={`comment-${comment.externalId}-${comment.owner}`}
+                  comment={comment}
+                  contentId={contentId}
+                  focusTextArea={focusTextArea}
+                  time={this.props.time}
+                />
+              </ReactCSSTransitionGroup>
             ) : null;
           })}
         </Wrapper>

@@ -39,7 +39,7 @@ class CommentBlock extends React.Component {
     this.state = {
       hidden: false,
       lastComments: props.comments,
-      currentComments: this.props.comments,
+      currentComments: props.comments,
     };
   }
 
@@ -58,7 +58,10 @@ class CommentBlock extends React.Component {
 
     if (this.props.comments.length > 0) {
       if (prevProps.comments.length !== this.props.comments.length) {
-        this.setState({ lastComments: prevProps.comments, currentComments: this.props.comments });
+        this.setState({
+          lastComments: prevProps.comments,
+          currentComments: this.props.comments,
+        });
       }
     }
   };

@@ -193,7 +193,10 @@ class NavBar extends React.Component {
       <Container className={className} isNotchedDevice={isNotchedDevice}>
         <LargeDeviceWrapper>
           <Link to="/" data-test-id="nav-discovery" aria-current={isActive(location, '/')}>
-            <StyledLogo src="/images/logo/OTRO-logo-shadowed-black@2x.png" alt="Otro" />
+            <StyledLogo
+              src="https://webstockreview.net/images/sample-png-images-14.png"
+              alt="Otro"
+            />
           </Link>
           <SearchWrapper>
             <StyledSearchForm onFocus={this.handleSearchFocus}>

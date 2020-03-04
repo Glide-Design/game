@@ -204,22 +204,6 @@ class Comments extends React.Component {
     if (focusTextArea && !browserIsIOSSafari) {
       this.focusTextArea();
     }
-
-    setTimeout(() => {
-      this.setState({ time: 2000 });
-    }, 2000);
-    setTimeout(() => {
-      this.setState({ time: 4000 });
-    }, 4000);
-    setTimeout(() => {
-      this.setState({ time: 6000 });
-    }, 6000);
-    setTimeout(() => {
-      this.setState({ time: 8000 });
-    }, 8000);
-    setTimeout(() => {
-      this.setState({ time: 10000 });
-    }, 10000);
   }
 
   componentDidUpdate() {
@@ -371,7 +355,7 @@ class Comments extends React.Component {
                 contentId={contentId}
                 requestAction={fetchCommentsForContent}
                 responseSelector={getCommentsByContentId}
-                time={this.state.time}
+                time={this.props.time}
                 itemsPerPage={15}
                 parentId={0}
                 focusTextArea={this.focusTextArea}

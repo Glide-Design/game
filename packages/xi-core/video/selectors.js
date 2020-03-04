@@ -19,3 +19,7 @@ export const getVideoProgressPercentage = state => contentId => {
   }
   return (resumePoint.progress * 100) / resumePoint.duration;
 };
+
+export const getVideoEllapsedTime = state => contentId => {
+  return get(`videos.ellapsedTimes.${contentId}.ellapsed`)(state);
+};

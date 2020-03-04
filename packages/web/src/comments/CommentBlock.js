@@ -50,13 +50,16 @@ class CommentBlock extends React.Component {
     // if (hasReachedEnd && !prevProps.hasReachedEnd && isAnotherPage()) {
     //   this.props.getNextPage();
     // }
+
     if (hasReachedEnd && !prevProps.hasReachedEnd) {
       console.log('End reached');
       // this.props.getNextPage();
     }
 
-    if (prevProps.comments.length !== this.props.comments.length) {
-      this.setState({ lastComments: prevProps.comments, currentComments: this.props.comments });
+    if (this.props.comments.length > 0) {
+      if (prevProps.comments.length !== this.props.comments.length) {
+        this.setState({ lastComments: prevProps.comments, currentComments: this.props.comments });
+      }
     }
   };
 
@@ -217,20 +220,21 @@ class CommentBlock extends React.Component {
             transitionEnterTimeout={400}
             transitionLeaveTimeout={400}
           >
-            {this.state.currentComments.map((comment, i) => {
-              return comment.externalId !== replyId ? (
-                <div key={i}>
-                  <Comment
-                    key={`comment-${comment.externalId}-${comment.owner}`}
-                    comment={comment}
-                    contentId={contentId}
-                    focusTextArea={focusTextArea}
-                    time={this.props.time}
-                    commentBeingReplaced={get(`lastComments[${i}]`, this.state)}
-                  />
-                </div>
-              ) : null;
-            })}
+            {this.state.currentComments &&
+              this.state.currentComments.map((comment, i) => {
+                return comment.externalId !== replyId ? (
+                  <div key={i}>
+                    <Comment
+                      key={`comment-${comment.externalId}-${comment.owner}`}
+                      comment={comment}
+                      contentId={contentId}
+                      focusTextArea={focusTextArea}
+                      time={this.props.time}
+                      commentBeingReplaced={get(`lastComments[${i}]`, this.state)}
+                    />
+                  </div>
+                ) : null;
+              })}
           </ReactCSSTransitionGroup>
         </Wrapper>
 

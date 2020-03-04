@@ -1,7 +1,4 @@
-import {
-  flow,
-  set,
-} from 'lodash/fp';
+import { flow, set } from 'lodash/fp';
 import { setItem, getItem, removeItem } from '../storageMiddleware';
 
 export const VIDEO_PLAYBACK_STARTED = 'VIDEO_PLAYBACK_STARTED';
@@ -13,6 +10,9 @@ export const VIDEO_PLAYBACK_PROGRESS = 'VIDEO_PLAYBACK_PROGRESS';
 
 export const SET_VIDEO_RESUME_POINTS = 'SET_VIDEO_RESUME_POINTS';
 export const REMOVE_RESUME_POINTS = 'REMOVE_VIDEO_RESUME_POINTS';
+
+export const SET_VIDEO_ELLAPSED_TIME = 'SET_VIDEO_ELLAPSED_TIME';
+export const REMOVE_VIDEO_ELLAPSED_TIME = 'REMOVE_VIDEO_ELLAPSED_TIME';
 
 const VIDEOS_RESUME_POINT_KEYS = 'videos-resume-point';
 
@@ -63,9 +63,9 @@ export const loadResumePoints = () => async dispatch => {
 export const setResumePointToStorage = (contentId, progress, duration) => async dispatch => {
   const resumePointsFromStorage = await dispatch(getVideosResumePoints());
 
-  const resumePoints = flow(
-    set(contentId, { duration, progress, watched: false })
-  )(resumePointsFromStorage);
+  const resumePoints = flow(set(contentId, { duration, progress, watched: false }))(
+    resumePointsFromStorage
+  );
 
   await dispatch(setItem(VIDEOS_RESUME_POINT_KEYS, JSON.stringify(resumePoints)));
   dispatch({ type: SET_VIDEO_RESUME_POINTS, resumePoints });
@@ -79,10 +79,12 @@ export const removeAllResumePoints = () => async dispatch => {
 export const removeResumePoint = contentId => async dispatch => {
   const resumePointsFromStorage = await dispatch(getVideosResumePoints());
 
-  const resumePoints = flow(
-    set(contentId, { watched: true })
-  )(resumePointsFromStorage);
+  const resumePoints = flow(set(contentId, { watched: true }))(resumePointsFromStorage);
 
   await dispatch(setItem(VIDEOS_RESUME_POINT_KEYS, JSON.stringify(resumePoints)));
   dispatch({ type: SET_VIDEO_RESUME_POINTS, resumePoints });
+};
+
+export const setVideoEllapsedTime = (contentId, ellapsedTime) => async dispatch => {
+  dispatch({ type: SET_VIDEO_ELLAPSED_TIME, ellapsedTime, contentId });
 };

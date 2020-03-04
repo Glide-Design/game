@@ -29,6 +29,7 @@ import {
   getLanguage as getMemberLanguage,
   isAuthenticated,
 } from 'xi-core/member/selectors';
+import { setVideoEllapsedTime as setEllapsedTime } from 'xi-core/video/actions';
 import withRequest from 'xi-core/withRequest';
 import navPresenter from 'xi-core/navigation/NavigationPresenter';
 import { addToViewCount } from 'xi-core/member/actions';
@@ -53,7 +54,6 @@ import FixedToolbarOnScroll from '../../../common/FixedToolbarOnScroll';
 import AvatarGroup from '../../../common/AvatarGroup';
 import ExpandableText from '../../../common/ExpandableText';
 // import SimpleDivider from '../../../common/SimpleDivider';
-import Comments from '../../../comments/Comments';
 import CommentsSpline from '../../../comments/CommentsSpline';
 import LanguageLineHeights from '../../../common/LanguageLineHeights';
 import { getTargetDevice, getOrientation } from '../../../state/app/selectors';
@@ -354,8 +354,10 @@ class Video extends React.Component {
     if (e.isAdvert) {
       return;
     }
-    const { handleProgress, upNextWindowLaunched } = this.props;
+    const { handleProgress, upNextWindowLaunched, setEllapsedTime, contentId } = this.props;
     handleProgress(e);
+
+    setEllapsedTime(contentId, Math.abs(e.currentTime));
 
     const upNextWindowIsAlreadyVisible = this.state.showUpNext;
     if (e.currentTime && !upNextWindowIsAlreadyVisible) {
@@ -577,6 +579,7 @@ const mapStateToProps = (state, { contentId, location, contentTypeName }) => {
 const mapDispatchToProps = dispatch => ({
   addToViewCount: contentId => dispatch(addToViewCount(contentId)),
   showAuthWizard: data => dispatch(showAuthWizard(data)),
+  setEllapsedTime: (contentId, currentTime) => dispatch(setEllapsedTime(contentId, currentTime)),
   playerAvatarClicked: playerName =>
     dispatch(
       contentDetailPageInteraction({

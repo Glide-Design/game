@@ -13,6 +13,7 @@ import { getExternalLink } from 'xi-core/config/selectors';
 import CardAnimationsController from 'xi-core/content/cards/CardAnimationsController';
 import OverlaysQueueController from 'xi-core/overlays/components/OverlaysQueueController';
 import hasNotch from 'xi-core/hasNotch';
+import { getVideoEllapsedTime as getVideoEllapsedTimeByContentId } from 'xi-core/video/selectors';
 import {
   ContainerPaddingCss,
   CoreDevices,
@@ -252,7 +253,10 @@ class AppLayout extends React.Component {
             </Wrapper>
           </MainContent>
           <ChatContent>
-            <Comments contentId="test" />
+            <Comments
+              contentId="test-content-id"
+              time={Math.floor(this.props.videoCurrentTime) * 1000}
+            />
           </ChatContent>
         </Container>
         <BlockedUser />
@@ -272,6 +276,7 @@ export default withRouter(
         isAuthenticated: isAuthenticated(state),
         privacyLink: getExternalLink('privacyPolicy')(state),
         isBlocked: isBlocked(state),
+        videoCurrentTime: getVideoEllapsedTimeByContentId(state)('test-content-id'),
       };
     },
     (dispatch, { history }) => {

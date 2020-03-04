@@ -1,5 +1,6 @@
 export default [
   {
+    time: 30000,
     externalId: 'c79ea7de-94b6-4603-b60a-6e7379498b31',
     postedDateTime: 1582663817143,
     comment: 'GG',
@@ -25,10 +26,9 @@ export default [
     hidden: false,
     expandAfter: false,
     reply: false,
-    time: 6000,
   },
   {
-    time: 6000,
+    time: 30000,
     externalId: 'ba747679-13f9-4328-85cc-d6c54787f768',
     postedDateTime: 1581919062973,
     comment: 'Aloha Pablo!\nUn cordobe en Hawaii:)',
@@ -56,7 +56,7 @@ export default [
     reply: false,
   },
   {
-    time: 6000,
+    time: 30000,
     externalId: '9bf52549-92e5-4c80-8a57-6b4c7a7fb1b5',
     postedDateTime: 1581079141092,
     comment: 'Life ❤',
@@ -82,7 +82,7 @@ export default [
     reply: false,
   },
   {
-    time: 6000,
+    time: 30000,
     externalId: '25796eed-46de-4356-9212-d850bd9bcb0b',
     postedDateTime: 1581079113209,
     comment: 'Best  player ',

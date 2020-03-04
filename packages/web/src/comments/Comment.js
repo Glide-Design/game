@@ -550,6 +550,12 @@ class Comment extends React.Component {
 
   isPinnedComment = (pinnedCommentId, comment) => pinnedCommentId === comment.externalId;
 
+  millisToMinutesAndSeconds = millis => {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  };
+
   render() {
     const {
       comment,
@@ -613,7 +619,7 @@ class Comment extends React.Component {
             className={this.state.contentWrapperClassName}
             isTopLevelComment={this.isTopLevelComment()}
           >
-            {!comment.removed && (
+            {/* {!comment.removed && (
               <ReportDeleteDesktopHolder>
                 {comment.owner ? (
                   <DeleteWrapper
@@ -635,7 +641,10 @@ class Comment extends React.Component {
                   )
                 )}
               </ReportDeleteDesktopHolder>
-            )}
+            )} */}
+            <ReportDeleteDesktopHolder>
+              {this.millisToMinutesAndSeconds(this.props.comment.time)}
+            </ReportDeleteDesktopHolder>
             <CommentInteractionContainer>
               <StyledHowLongAgo timestamp={comment.postedDateTime} />
               <StyledLikeInteractionIcon

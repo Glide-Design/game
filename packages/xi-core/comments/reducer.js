@@ -32,11 +32,11 @@ import _mockComments2 from './_mockComments2';
 
 const testComments = {
   '0': _mockComments1,
-  '2000': _mockComments2,
-  '4000': _mockComments1,
   '6000': _mockComments2,
-  '8000': _mockComments1,
-  '10000': _mockComments2,
+  '12000': _mockComments1,
+  '18000': _mockComments2,
+  '24000': _mockComments1,
+  '30000': _mockComments2,
 };
 
 const getInitials = comment => {
@@ -71,7 +71,7 @@ const getDisplayName = comment => {
 
 export const comments = (
   state = {
-    test: testComments,
+    'test-content-id': testComments,
   },
   action
 ) => {

@@ -28,7 +28,7 @@ export const getCommentHighlightsByContentId = state => contentId => {
 };
 
 export const getCommentsByContentId = state => (contentId, time) => {
-  let results = get(`comments.${contentId}.${time}`, state);
+  let results = getOr([], `comments.${contentId}.${time}`, state);
   return results; // ? results.filter(comment => comment.parent === 0) : [];
 };
 

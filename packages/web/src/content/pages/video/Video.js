@@ -29,6 +29,7 @@ import {
   getLanguage as getMemberLanguage,
   isAuthenticated,
 } from 'xi-core/member/selectors';
+import { setVideoEllapsedTime as setEllapsedTime } from 'xi-core/video/actions';
 import withRequest from 'xi-core/withRequest';
 import navPresenter from 'xi-core/navigation/NavigationPresenter';
 import { addToViewCount } from 'xi-core/member/actions';
@@ -65,7 +66,7 @@ import Tag from '../../components/Tag';
 import MoreInSeries from './MoreInSeries';
 import SecondaryCta from './SecondaryCta';
 import UpNext from './upNext';
-import Comments from '../../../comments/Comments';
+// import Comments from '../../../comments/Comments';
 // import CommentsSpline from '../../../comments/CommentsSpline';
 
 const SHOW_UP_NEXT_DURATION = 10;
@@ -336,8 +337,10 @@ class Video extends React.Component {
     if (e.isAdvert) {
       return;
     }
-    const { handleProgress, upNextWindowLaunched } = this.props;
+    const { handleProgress, upNextWindowLaunched, setEllapsedTime, contentId } = this.props;
     handleProgress(e);
+
+    setEllapsedTime(contentId, Math.abs(e.currentTime));
 
     const upNextWindowIsAlreadyVisible = this.state.showUpNext;
     if (e.currentTime && !upNextWindowIsAlreadyVisible) {
@@ -555,6 +558,7 @@ const mapStateToProps = (state, { contentId, location, contentTypeName }) => {
 const mapDispatchToProps = dispatch => ({
   addToViewCount: contentId => dispatch(addToViewCount(contentId)),
   showAuthWizard: data => dispatch(showAuthWizard(data)),
+  setEllapsedTime: (contentId, currentTime) => dispatch(setEllapsedTime(contentId, currentTime)),
   playerAvatarClicked: playerName =>
     dispatch(
       contentDetailPageInteraction({

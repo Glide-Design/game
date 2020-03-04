@@ -262,7 +262,6 @@ class AnimatedText extends React.Component {
       for (let j = 0; j < numCharactersPerIteration; j++) {
         const characterPosition = i + numCharactersPerIteration * j;
         const newCharacter = nextText[characterPosition] || ' ';
-        console.log(nextText, newCharacter);
         currentText =
           currentText.slice(0, characterPosition) +
           newCharacter +

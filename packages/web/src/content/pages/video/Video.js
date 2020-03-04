@@ -53,6 +53,8 @@ import FixedToolbarOnScroll from '../../../common/FixedToolbarOnScroll';
 import AvatarGroup from '../../../common/AvatarGroup';
 import ExpandableText from '../../../common/ExpandableText';
 // import SimpleDivider from '../../../common/SimpleDivider';
+import Comments from '../../../comments/Comments';
+import CommentsSpline from '../../../comments/CommentsSpline';
 import LanguageLineHeights from '../../../common/LanguageLineHeights';
 import { getTargetDevice, getOrientation } from '../../../state/app/selectors';
 import Title, { LINE_HEIGHTS } from '../../components/Title';
@@ -65,8 +67,6 @@ import Tag from '../../components/Tag';
 import MoreInSeries from './MoreInSeries';
 import SecondaryCta from './SecondaryCta';
 import UpNext from './upNext';
-import Comments from '../../../comments/Comments';
-// import CommentsSpline from '../../../comments/CommentsSpline';
 
 const SHOW_UP_NEXT_DURATION = 10;
 
@@ -120,6 +120,14 @@ const VideoContainer = styled.div`
     margin: auto;
   }
   /* END Limit VideoJs width & height on large displays */
+
+  .vjs-paused .SplineContainer,
+  .vjs-user-active .SplineContainer {
+    opacity: 1;
+  }
+  .vjs-user-inactive .SplineContainer {
+    opacity: 0;
+  }
 `;
 
 // These width and height styles are ignored when the VideoJs is
@@ -217,6 +225,16 @@ const RHS = styled.div`
   background: white;
   height: calc(100vh - 72px);
   border-left: 1px solid gray;
+`;
+
+const SplineContainer = styled.div`
+  position: absolute;
+  height: 120px;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  padding: 0 42px;
+  transition: opacity 1s;
 `;
 
 class Video extends React.Component {
@@ -444,6 +462,11 @@ class Video extends React.Component {
               contentId={contentId}
               subtitles={subtitles}
               onPlay={this.checkEntitlementAndContentStatus}
+              spline={
+                <SplineContainer className="SplineContainer">
+                  <CommentsSpline height={120} />
+                </SplineContainer>
+              }
             />
           ) : (
             <VideoLoadingFiller>
@@ -463,7 +486,6 @@ class Video extends React.Component {
         </FixedToolbarOnScrollWrapper>
 
         {showUpNext && <UpNext contentId={contentId} />}
-
         <PageContentInfo
           tag={<StyledTag whiteBackground tagType={tagType} />}
           icon={

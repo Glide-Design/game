@@ -512,6 +512,7 @@ class VideoApp extends Component {
       memberLanguage,
       onProgress,
       source,
+      spline,
     } = this.props;
 
     const videoJsOptions = {
@@ -528,6 +529,7 @@ class VideoApp extends Component {
       // playbackRates: [0.25, 0.5, 1, 1.25, 1.5, 2],
       onInit: (el, playerInstance) => this.initializeVideoJsPlayer(el, playerInstance),
       onTimeUpdate: duration => onProgress(duration),
+      spline,
     };
 
     return (

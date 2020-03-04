@@ -9,7 +9,6 @@ import { browserIsIOSSafari, browserIsIOSChrome } from 'xi-core/utils/browser';
 // Disabling eslint because it does not recognize the dynamically generated tracks
 export default class VideoPlayer extends React.Component {
   componentDidMount = () => {
-
     // instantiate Video.js and register plugins for quality selector
     const { props, videoNode } = this;
     if (
@@ -75,6 +74,7 @@ export default class VideoPlayer extends React.Component {
               />
             ))}
           </video>
+          {this.props.spline}
         </div>
       </div>
     );

@@ -1,104 +1,54 @@
-// import * as React from 'react';
-// import {
-//   Chart,
-//   ArgumentAxis,
-//   ValueAxis,
-//   AreaSeries,
-//   Title,
-//   // Legend,
-// } from '@devexpress/dx-react-chart-material-ui';
-// // import { withStyles } from '@material-ui/core/styles';
-// import { ArgumentScale, Animation } from '@devexpress/dx-react-chart';
-// import { curveCatmullRom, area } from 'd3-shape';
-// import { scalePoint } from 'd3-scale';
+import * as React from 'react';
+import { Chart, AreaSeries } from '@devexpress/dx-react-chart-bootstrap4';
+import { Animation } from '@devexpress/dx-react-chart';
+import { curveCatmullRom, area } from 'd3-shape';
+import '@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css';
 
-// const data = [
-//   { month: 'Jan', appStore: 101, googlePlay: 13 },
-//   { month: 'Feb', appStore: 89, googlePlay: 15 },
-//   { month: 'Mar', appStore: 107, googlePlay: 20 },
-//   { month: 'Apr', appStore: 113, googlePlay: 17 },
-//   { month: 'May', appStore: 105, googlePlay: 21 },
-//   { month: 'Jun', appStore: 91, googlePlay: 22 },
-//   { month: 'Jul', appStore: 110, googlePlay: 23 },
-//   { month: 'Aug', appStore: 111, googlePlay: 25 },
-//   { month: 'Sep', appStore: 112, googlePlay: 27 },
-//   { month: 'Oct', appStore: 111, googlePlay: 30 },
-//   { month: 'Nov', appStore: 120, googlePlay: 35 },
-//   { month: 'Dec', appStore: 160, googlePlay: 45 },
-// ];
-// // const legendStyles = () => ({
-// //   root: {
-// //     display: 'flex',
-// //     margin: 'auto',
-// //     flexDirection: 'row',
-// //   },
-// // });
-// // const legendRootBase = ({ classes, ...restProps }) => (
-// //   <Legend.Root {...restProps} className={classes.root} />
-// // );
-// // const Root = withStyles(legendStyles, { name: 'LegendRoot' })(legendRootBase);
-// // const legendLabelStyles = () => ({
-// //   label: {
-// //     whiteSpace: 'nowrap',
-// //   },
-// // });
-// // const legendLabelBase = ({ classes, ...restProps }) => (
-// //   <Legend.Label className={classes.label} {...restProps} />
-// // );
-// // const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase);
-// // const demoStyles = () => ({
-// //   chart: {
-// //     paddingRight: '20px',
-// //   },
-// // });
+const data = [
+  { time: 0, comments: 0 },
+  { time: 1, comments: 89 },
+  { time: 2, comments: 107 },
+  { time: 3, comments: 20 },
+  { time: 4, comments: 5 },
+  { time: 5, comments: 60 },
+  { time: 6, comments: 10 },
+  { time: 7, comments: 111 },
+  { time: 8, comments: 12 },
+  { time: 9, comments: 10 },
+  { time: 10, comments: 120 },
+  { time: 11, comments: 160 },
+  { time: 12, comments: 0 },
+];
 
-// const Area = props => (
-//   <AreaSeries.Path
-//     {...props}
-//     path={area()
-//       .x(({ arg }) => arg)
-//       .y1(({ val }) => val)
-//       .y0(({ startVal }) => startVal)
-//       .curve(curveCatmullRom)}
-//   />
-// );
+const Area = props => (
+  <AreaSeries.Path
+    {...props}
+    path={area()
+      .x(({ arg }) => arg)
+      .y1(({ val }) => val)
+      .y0(({ startVal }) => startVal)
+      .curve(curveCatmullRom)}
+  />
+);
 
-// class Demo extends React.PureComponent {
-//   constructor(props) {
-//     super(props);
+class Demo extends React.PureComponent {
+  constructor(props) {
+    super(props);
 
-//     this.state = {
-//       data,
-//     };
-//   }
+    this.state = {
+      data,
+    };
+  }
 
-//   render() {
-//     const { data: chartData } = this.state;
-//     const { classes } = this.props;
-//     return (
-//       <Chart data={chartData} className={classes.chart}>
-//         <ArgumentScale factory={scalePoint} />
-//         <ArgumentAxis />
-//         <ValueAxis />
+  render() {
+    const { data: chartData } = this.state;
+    return (
+      <Chart data={chartData} height={this.props.height} style={{ padding: 0 }}>
+        <AreaSeries valueField="comments" argumentField="time" seriesComponent={Area} />
+        <Animation />
+      </Chart>
+    );
+  }
+}
 
-//         <AreaSeries
-//           name="App Store"
-//           valueField="appStore"
-//           argumentField="month"
-//           seriesComponent={Area}
-//         />
-//         <AreaSeries
-//           name="Google Play"
-//           valueField="googlePlay"
-//           argumentField="month"
-//           seriesComponent={Area}
-//         />
-//         <Animation />
-//         {/*<Legend position="bottom" rootComponent={Root} labelComponent={Label} />*/}
-//         <Title text="iOS App Store vs Google Play Revenue in 2012" />
-//       </Chart>
-//     );
-//   }
-// }
-
-// export default Demo;
+export default Demo;

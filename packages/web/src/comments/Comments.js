@@ -53,6 +53,8 @@ const Container = styled.div`
   ${({ isSmallDevice }) => (isSmallDevice ? 'padding-top: 52px;' : 'padding-top: 72px;')};
   ${({ isSmallDevice }) =>
     isSmallDevice ? 'height: calc(100% - 52px);' : 'height: calc(100% - 72px);'};
+
+  width: 25%;
 `;
 
 const CommentsWrapper = styled.div`
@@ -209,6 +211,15 @@ class Comments extends React.Component {
     setTimeout(() => {
       this.setState({ time: 4000 });
     }, 4000);
+    setTimeout(() => {
+      this.setState({ time: 6000 });
+    }, 6000);
+    setTimeout(() => {
+      this.setState({ time: 8000 });
+    }, 8000);
+    setTimeout(() => {
+      this.setState({ time: 10000 });
+    }, 10000);
   }
 
   componentDidUpdate() {

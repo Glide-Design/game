@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, includes } from 'lodash/fp';
+import { compose, includes, get } from 'lodash/fp';
 import { FormattedMessage } from 'react-intl';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 // import withRequest from 'xi-core/withRequest';
 import { isLoading, REPLIES_LOAD_TYPE, getCommentsByContentId } from 'xi-core/comments/selectors';
 import styled from 'styled-components';
@@ -31,9 +32,16 @@ const StyledLoaderSpinner = styled(LoaderSpinner)`
 `;
 
 class CommentBlock extends React.Component {
-  state = {
-    hidden: false,
-  };
+  state;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      hidden: false,
+      lastComments: props.comments,
+      currentComments: this.props.comments,
+    };
+  }
 
   componentDidUpdate = prevProps => {
     const { isAnotherPage, contentId, hasReachedEnd } = this.props;
@@ -45,6 +53,10 @@ class CommentBlock extends React.Component {
     if (hasReachedEnd && !prevProps.hasReachedEnd) {
       console.log('End reached');
       // this.props.getNextPage();
+    }
+
+    if (prevProps.comments.length !== this.props.comments.length) {
+      this.setState({ lastComments: prevProps.comments, currentComments: this.props.comments });
     }
   };
 
@@ -200,17 +212,26 @@ class CommentBlock extends React.Component {
         ) : null}
 
         <Wrapper hidden={hidden}>
-          {comments.map(comment => {
-            return comment.externalId !== replyId ? (
-              <Comment
-                key={comment.externalId}
-                comment={comment}
-                contentId={contentId}
-                focusTextArea={focusTextArea}
-                time={this.props.time}
-              />
-            ) : null;
-          })}
+          <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={400}
+          >
+            {this.state.currentComments.map((comment, i) => {
+              return comment.externalId !== replyId ? (
+                <div key={i}>
+                  <Comment
+                    key={`comment-${comment.externalId}-${comment.owner}`}
+                    comment={comment}
+                    contentId={contentId}
+                    focusTextArea={focusTextArea}
+                    time={this.props.time}
+                    commentBeingReplaced={get(`lastComments[${i}]`, this.state)}
+                  />
+                </div>
+              ) : null;
+            })}
+          </ReactCSSTransitionGroup>
         </Wrapper>
 
         {isLoading && !parentId && <StyledLoaderSpinner />}

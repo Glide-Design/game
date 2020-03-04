@@ -472,6 +472,9 @@ class Comment extends React.Component {
         >
           <FormattedMessage id="comments.reply" defaultMessage="REPLY" />
         </CommentFooterItem>
+        <CommentFooterItem style={{ marginLeft: 'auto', marginRight: 0 }}>
+          {this.millisToMinutesAndSeconds(this.props.comment.time)}
+        </CommentFooterItem>
       </React.Fragment>
     );
   };
@@ -642,9 +645,6 @@ class Comment extends React.Component {
                 )}
               </ReportDeleteDesktopHolder>
             )} */}
-            <ReportDeleteDesktopHolder>
-              {this.millisToMinutesAndSeconds(this.props.comment.time)}
-            </ReportDeleteDesktopHolder>
             <CommentInteractionContainer>
               <StyledHowLongAgo timestamp={comment.postedDateTime} />
               <StyledLikeInteractionIcon

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, includes, get } from 'lodash/fp';
 import { FormattedMessage } from 'react-intl';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 // import withRequest from 'xi-core/withRequest';
 import { isLoading, REPLIES_LOAD_TYPE, getCommentsByContentId } from 'xi-core/comments/selectors';
 import styled from 'styled-components';
@@ -11,7 +10,8 @@ import { Grey85 } from 'xi-core/colours';
 import { commentsPageInteraction } from 'xi-core/comments/actions';
 import { PropertyKeys } from 'xi-core/analytics/analyticEvents';
 import LoaderSpinner from '../common/LoaderSpinner';
-import Comment, { RepliesInfo, RepliesInfoContainer } from './Comment';
+import { RepliesInfo, RepliesInfoContainer } from './Comment';
+import CommentBlockDisplayLogic from './CommentBlockDisplayLogic';
 
 const Container = styled.div`
   position: relative;
@@ -38,8 +38,6 @@ class CommentBlock extends React.Component {
     super(props);
     this.state = {
       hidden: false,
-      lastComments: props.comments,
-      currentComments: props.comments,
     };
   }
 
@@ -54,15 +52,6 @@ class CommentBlock extends React.Component {
     if (hasReachedEnd && !prevProps.hasReachedEnd) {
       console.log('End reached');
       // this.props.getNextPage();
-    }
-
-    if (this.props.comments.length > 0) {
-      if (this.state.currentComments.length !== this.props.comments.length) {
-        this.setState({
-          lastComments: this.state.currentComments,
-          currentComments: this.props.comments,
-        });
-      }
     }
   };
 
@@ -191,15 +180,7 @@ class CommentBlock extends React.Component {
   };
 
   render = () => {
-    const {
-      comments,
-      contentId,
-      focusTextArea,
-      isLoading,
-      parentId,
-      loadType,
-      replyId,
-    } = this.props;
+    const { isLoading, parentId, loadType, renderComments } = this.props;
 
     const { hidden } = this.state;
 
@@ -217,29 +198,7 @@ class CommentBlock extends React.Component {
           )
         ) : null}
 
-        <Wrapper hidden={hidden}>
-          <ReactCSSTransitionGroup
-            transitionName="example"
-            transitionEnterTimeout={400}
-            transitionLeaveTimeout={400}
-          >
-            {this.state.currentComments &&
-              this.state.currentComments.map((comment, i) => {
-                return comment.externalId !== replyId ? (
-                  <div key={i}>
-                    <Comment
-                      key={`comment-${comment.externalId}-${comment.owner}`}
-                      comment={comment}
-                      contentId={contentId}
-                      focusTextArea={focusTextArea}
-                      time={this.props.time}
-                      commentBeingReplaced={get(`lastComments[${i}]`, this.state)}
-                    />
-                  </div>
-                ) : null;
-              })}
-          </ReactCSSTransitionGroup>
-        </Wrapper>
+        <Wrapper hidden={hidden}>{renderComments()}</Wrapper>
 
         {isLoading && !parentId && <StyledLoaderSpinner />}
 
@@ -259,10 +218,9 @@ class CommentBlock extends React.Component {
   };
 }
 
-const mapStateToProps = (state, { contentId, parentId, loadType, replyId, time }) => {
+const mapStateToProps = (state, { contentId, parentId, loadType, replyId }) => {
   return {
     isLoading: isLoading(state)(contentId, parentId, loadType ? loadType + ',' + replyId : null),
-    comments: getCommentsByContentId(state)(contentId, Math.floor(time)),
   };
 };
 
@@ -274,7 +232,8 @@ export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )
+  ),
+  CommentBlockDisplayLogic
   // withRequest({
   //   // pageable: true,
   // })

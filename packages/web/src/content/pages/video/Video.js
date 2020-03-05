@@ -128,6 +128,10 @@ const VideoContainer = styled.div`
   .vjs-user-inactive .SplineContainer {
     opacity: 0;
   }
+
+  video {
+    opacity: 0;
+  }
 `;
 
 // These width and height styles are ignored when the VideoJs is
@@ -500,7 +504,7 @@ class Video extends React.Component {
           title={
             <LanguageLineHeights lineHeights={LINE_HEIGHTS}>
               {({ lineHeight }) => (
-                <StyledTitle lineHeight={lineHeight}>Fortnite Sample Video</StyledTitle>
+                <StyledTitle lineHeight={lineHeight}>Sample Video</StyledTitle>
                 // <StyledTitle lineHeight={lineHeight}>{content.title}</StyledTitle>
               )}
             </LanguageLineHeights>

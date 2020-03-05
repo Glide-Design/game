@@ -253,10 +253,7 @@ class AppLayout extends React.Component {
             </Wrapper>
           </MainContent>
           <ChatContent>
-            <Comments
-              contentId="test-content-id"
-              time={Math.floor(this.props.videoCurrentTime) * 1000}
-            />
+            <Comments contentId="test-content-id" time={this.props.videoCurrentTime} />
           </ChatContent>
         </Container>
         <BlockedUser />

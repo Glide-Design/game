@@ -17,41 +17,41 @@ import config from './config';
 import ErrorPage from './errors/ErrorPage';
 import store from './state/store';
 
-const Discovery = Loadable({ loader: () => import('./discovery'), ...LoadableProps });
+// const Discovery = Loadable({ loader: () => import('./discovery'), ...LoadableProps });
 const Content = Loadable({ loader: () => import('./content/pages'), ...LoadableProps });
-const PlayerIndex = Loadable({
-  loader: () => import('./playerIndex'),
-  ...LoadableProps,
-});
-const PlayerProfile = Loadable({
-  loader: () => import('./playerProfile'),
-  ...LoadableProps,
-});
-const PlayerProfileVanity = Loadable({
-  loader: () => import('./playerProfile/Vanity'),
-  ...LoadableProps,
-});
-const Search = Loadable({ loader: () => import('./search/Search'), ...LoadableProps });
-const Language = Loadable({
-  loader: () => import('./member/language'),
-  ...LoadableProps,
-});
+// const PlayerIndex = Loadable({
+//   loader: () => import('./playerIndex'),
+//   ...LoadableProps,
+// });
+// const PlayerProfile = Loadable({
+//   loader: () => import('./playerProfile'),
+//   ...LoadableProps,
+// });
+// const PlayerProfileVanity = Loadable({
+//   loader: () => import('./playerProfile/Vanity'),
+//   ...LoadableProps,
+// });
+// const Search = Loadable({ loader: () => import('./search/Search'), ...LoadableProps });
+// const Language = Loadable({
+//   loader: () => import('./member/language'),
+//   ...LoadableProps,
+// });
 // const Payments = Loadable({
 //   loader: () => import('./member/payments'),
 //   ...LoadableProps,
 // });
-const MyLocker = Loadable({
-  loader: () => import('./member/myLocker'),
-  ...LoadableProps,
-});
-const MyAccount = Loadable({
-  loader: () => import('./member/myAccount'),
-  ...LoadableProps,
-});
-const HelpInformation = Loadable({
-  loader: () => import('./member/help'),
-  ...LoadableProps,
-});
+// const MyLocker = Loadable({
+//   loader: () => import('./member/myLocker'),
+//   ...LoadableProps,
+// });
+// const MyAccount = Loadable({
+//   loader: () => import('./member/myAccount'),
+//   ...LoadableProps,
+// });
+// const HelpInformation = Loadable({
+//   loader: () => import('./member/help'),
+//   ...LoadableProps,
+// });
 // const UpdatePaymentMethod = Loadable({
 //   loader: () => import('./member/payment/UpdatePaymentMethod'),
 //   ...LoadableProps,
@@ -60,55 +60,55 @@ const HelpInformation = Loadable({
 //   loader: () => import('./member/membership'),
 //   ...LoadableProps,
 // });
-const ContactPreferences = Loadable({
-  loader: () => import('./member/contactPreferences'),
-  ...LoadableProps,
-});
-const EditProfile = Loadable({
-  loader: () => import('./member/editProfile'),
-  ...LoadableProps,
-});
-const Profile = Loadable({
-  loader: () => import('./profile/Profile'),
-  ...LoadableProps,
-});
-const Settings = Loadable({
-  loader: () => import('./profile/Settings'),
-  ...LoadableProps,
-});
-const Timeline = Loadable({
-  loader: () => import('./gallery/Timeline'),
-  ...LoadableProps,
-});
-const JoinOtro = Loadable({
-  loader: () => import('./signup/joinotro'),
-  ...LoadableProps,
-});
-const Join = Loadable({ loader: () => import('./signup/join'), ...LoadableProps });
-const SignIn = Loadable({ loader: () => import('./signup/signin'), ...LoadableProps });
-const LoginCode = Loadable({ loader: () => import('./signup/loginCode'), ...LoadableProps });
-const AuthRedirect = Loadable({
-  loader: () => import('./signup/AuthRedirect'),
-  ...LoadableProps,
-});
+// const ContactPreferences = Loadable({
+//   loader: () => import('./member/contactPreferences'),
+//   ...LoadableProps,
+// });
+// const EditProfile = Loadable({
+//   loader: () => import('./member/editProfile'),
+//   ...LoadableProps,
+// });
+// const Profile = Loadable({
+//   loader: () => import('./profile/Profile'),
+//   ...LoadableProps,
+// });
+// const Settings = Loadable({
+//   loader: () => import('./profile/Settings'),
+//   ...LoadableProps,
+// });
+// const Timeline = Loadable({
+//   loader: () => import('./gallery/Timeline'),
+//   ...LoadableProps,
+// });
+// const JoinOtro = Loadable({
+//   loader: () => import('./signup/joinotro'),
+//   ...LoadableProps,
+// });
+// const Join = Loadable({ loader: () => import('./signup/join'), ...LoadableProps });
+// const SignIn = Loadable({ loader: () => import('./signup/signin'), ...LoadableProps });
+// const LoginCode = Loadable({ loader: () => import('./signup/loginCode'), ...LoadableProps });
+// const AuthRedirect = Loadable({
+//   loader: () => import('./signup/AuthRedirect'),
+//   ...LoadableProps,
+// });
 // const Unlimited = Loadable({
 //   loader: () => import('./purchases/unlimited'),
 //   ...LoadableProps,
 // });
-const NoMatch = Loadable({
-  loader: () => import('./app/NoMatch'),
-  ...LoadableProps,
-});
+// const NoMatch = Loadable({
+//   loader: () => import('./app/NoMatch'),
+//   ...LoadableProps,
+// });
 
-const AppLanding = Loadable({
-  loader: () => import('./signup/appLanding'),
-  ...LoadableProps,
-});
+// const AppLanding = Loadable({
+//   loader: () => import('./signup/appLanding'),
+//   ...LoadableProps,
+// });
 
-const ContentIndex = Loadable({
-  loader: () => import('./contentIndex'),
-  ...LoadableProps,
-});
+// const ContentIndex = Loadable({
+//   loader: () => import('./contentIndex'),
+//   ...LoadableProps,
+// });
 
 store.dispatch(setConfig({ ...sanitizeEnvVars(config) }));
 
@@ -157,8 +157,8 @@ class App extends React.Component {
                   <ScrollMemory />
                   <AppLayout>
                     <Switch>
-                      <Route {...routes.contentIndex} component={ContentIndex} />
                       <Route {...routes.content} component={Content} />
+                      {/*<Route {...routes.contentIndex} component={ContentIndex} />
                       <Route {...routes.profile} component={Profile} />
                       <Route {...routes.editProfile} component={EditProfile} />
                       <Route {...routes.joinotro} component={JoinOtro} />
@@ -166,7 +166,7 @@ class App extends React.Component {
                       <Route {...routes.signin} component={SignIn} />
                       <Route {...routes.loginCode} component={LoginCode} />
                       {/* <Route {...routes.unlimited} component={Unlimited} /> */}
-                      <Route {...routes.activate} component={AuthRedirect} />
+                      {/*<Route {...routes.activate} component={AuthRedirect} />
                       <Route {...routes.invite} component={AuthRedirect} />
                       <Route {...routes.login} component={AuthRedirect} />
                       <Route {...routes.settings} component={Settings} />
@@ -179,7 +179,7 @@ class App extends React.Component {
                       {/* <Route {...routes.updatePayment} component={UpdatePaymentMethod} /> */}
                       {/* <Route {...routes.membership} component={Membership} /> */}
                       {/* <Route {...routes.payments} component={Payments} /> */}
-                      <Route {...routes.language} component={Language} />
+                      {/*<Route {...routes.language} component={Language} />
                       <Route {...routes.help} component={HelpInformation} />
                       <Route {...routes.contactPreferences} component={ContactPreferences} />
                       <Route {...routes.appLanding} component={AppLanding} />
@@ -189,7 +189,7 @@ class App extends React.Component {
                         component={PlayerProfileVanity}
                       />
                       <Route exact {...routes.discovery} component={Discovery} />
-                      <Route component={NoMatch} />
+                      <Route component={NoMatch} />*/}
                     </Switch>
                   </AppLayout>
                 </Fragment>

@@ -13,7 +13,11 @@ export const videos = (state = defaultState, action) => {
     case REMOVE_RESUME_POINTS:
       return set('resumePoints', {}, state);
     case SET_VIDEO_ELLAPSED_TIME:
-      return set(`ellapsedTimes.${action.contentId}`, { ellapsed: action.ellapsedTime }, state);
+      return set(
+        `ellapsedTimes.${action.contentId}`,
+        { ellapsed: action.ellapsedTime * 1000 },
+        state
+      );
     default:
       return state;
   }

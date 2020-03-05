@@ -35,12 +35,12 @@ import _mockComments5 from './_mockComments5';
 import _mockComments6 from './_mockComments6';
 
 const testComments = {
-  '6000': _mockComments1,
-  '12000': _mockComments2,
-  '18000': _mockComments3,
-  '24000': _mockComments4,
-  '30000': _mockComments5,
-  '36000': _mockComments6,
+  '2000': _mockComments1,
+  '5000': _mockComments2,
+  '8000': _mockComments3,
+  '11000': _mockComments4,
+  '14000': _mockComments5,
+  '16000': _mockComments6,
 };
 
 const getInitials = comment => {

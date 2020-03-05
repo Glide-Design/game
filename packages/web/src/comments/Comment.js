@@ -141,6 +141,16 @@ const CommentFooterItem = styled.div`
   }
 `;
 
+const CommentFooterItemTime = styled(CommentFooterItem)`
+  margin-left: auto;
+  margin-right: 0;
+  transition: color 1s;
+
+  &.active {
+    color: #7c52f6;
+  }
+`;
+
 const CommentInteractionContainer = styled.div`
   position: absolute;
   top: 10px;
@@ -254,14 +264,14 @@ class AnimatedText extends React.Component {
 
   async Animate(initText, nextText) {
     const numReplacement = Math.min(initText.length || nextText.length);
-    const iterations = Math.max(Math.min(Math.floor(nextText.length / 3), 4), 12);
+    const iterations = Math.max(Math.min(Math.floor(nextText.length / 2), 6), 16);
     const numCharactersPerIteration = Math.floor(numReplacement / iterations);
     let currentText = initText;
     const sleep = () => new Promise(accept => setTimeout(accept, 400 / iterations));
     for (let i = 0; i < iterations; i++) {
       for (let j = 0; j < numCharactersPerIteration; j++) {
         const characterPosition = i + numCharactersPerIteration * j;
-        const newCharacter = nextText[characterPosition] || '&nbsp;';
+        const newCharacter = nextText[characterPosition] || ' ';
         currentText =
           currentText.slice(0, characterPosition) +
           newCharacter +
@@ -438,6 +448,9 @@ class Comment extends React.Component {
       spotLightInteraction,
       discussionHighlights,
     } = this.props;
+
+    console.log(this.props.time, this.props.comment.time);
+
     return (
       <React.Fragment>
         <CommentFooterItem
@@ -472,9 +485,16 @@ class Comment extends React.Component {
         >
           <FormattedMessage id="comments.reply" defaultMessage="REPLY" />
         </CommentFooterItem>
-        <CommentFooterItem style={{ marginLeft: 'auto', marginRight: 0 }}>
+        <CommentFooterItemTime
+          className={
+            this.props.time > this.props.comment.time &&
+            this.props.time - 1000 < this.props.comment.time
+              ? 'active'
+              : null
+          }
+        >
           {this.millisToMinutesAndSeconds(this.props.comment.time)}
-        </CommentFooterItem>
+        </CommentFooterItemTime>
       </React.Fragment>
     );
   };
@@ -811,7 +831,7 @@ const mapStateToProps = (state, { comment, contentId, discussionHighlights = fal
       comment.externalId,
       contentId,
       discussionHighlights,
-      time
+      Math.floor(time)
     ),
   };
 };

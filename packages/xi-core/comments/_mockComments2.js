@@ -1,6 +1,6 @@
 export default [
   {
-    time: 12000,
+    time: 5000,
     externalId: 'c79ea7de-94b6-4603-b60a-6e7379498b31',
     postedDateTime: 1582663817143,
     comment: 'GG',
@@ -28,7 +28,7 @@ export default [
     reply: false,
   },
   {
-    time: 12000,
+    time: 5000,
     externalId: '8bf0ce17-cb2d-4695-9278-5d618b422ec3',
     postedDateTime: 1581079099376,
     comment: 'Wooow',
@@ -54,7 +54,7 @@ export default [
     reply: false,
   },
   {
-    time: 12000,
+    time: 5000,
     externalId: '62685dd0-4193-4501-991c-543c9ae52b3d',
     postedDateTime: 1576734479356,
     comment: 'Genioooollll',
@@ -80,7 +80,7 @@ export default [
     reply: false,
   },
   {
-    time: 12000,
+    time: 5000,
     externalId: 'c16eeab4-5cd5-4205-b74e-bacf5017d5d7',
     postedDateTime: 1576259890052,
     comment: '❤️❤️❤️❤️',
@@ -108,7 +108,7 @@ export default [
     reply: false,
   },
   {
-    time: 12000,
+    time: 5000,
     externalId: '4a95dc92-e54e-49c5-83ab-9f4d5c698ad4',
     postedDateTime: 1576157447699,
     comment: 'Paulo Dybala❤️',

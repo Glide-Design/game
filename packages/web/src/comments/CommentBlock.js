@@ -57,9 +57,9 @@ class CommentBlock extends React.Component {
     }
 
     if (this.props.comments.length > 0) {
-      if (prevProps.comments.length !== this.props.comments.length) {
+      if (this.state.currentComments.length !== this.props.comments.length) {
         this.setState({
-          lastComments: prevProps.comments,
+          lastComments: this.state.currentComments,
           currentComments: this.props.comments,
         });
       }
@@ -262,7 +262,7 @@ class CommentBlock extends React.Component {
 const mapStateToProps = (state, { contentId, parentId, loadType, replyId, time }) => {
   return {
     isLoading: isLoading(state)(contentId, parentId, loadType ? loadType + ',' + replyId : null),
-    comments: getCommentsByContentId(state)(contentId, time),
+    comments: getCommentsByContentId(state)(contentId, Math.floor(time)),
   };
 };
 

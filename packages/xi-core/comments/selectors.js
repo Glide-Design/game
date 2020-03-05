@@ -28,7 +28,8 @@ export const getCommentHighlightsByContentId = state => contentId => {
 };
 
 export const getCommentsByContentId = state => (contentId, time) => {
-  let results = getOr([], `comments.${contentId}.${time}`, state);
+  const timeRoundedDownToNearest1000 = Math.ceil(time / 1000) * 1000;
+  let results = getOr([], `comments.${contentId}.${timeRoundedDownToNearest1000}`, state);
   return results; // ? results.filter(comment => comment.parent === 0) : [];
 };
 
@@ -118,7 +119,8 @@ export const getImportantRepliesByContentIdAndCommentId = state => (
   let results = {};
 
   if (!discussionHighlights) {
-    results = get(`comments.${contentId}.${time}`, state);
+    const timeRoundedDownToNearest1000 = Math.ceil(time / 1000) * 1000;
+    results = get(`comments.${contentId}.${timeRoundedDownToNearest1000}`, state);
   } else {
     results = get(`comments.commentHighlights.${contentId}`, state);
   }

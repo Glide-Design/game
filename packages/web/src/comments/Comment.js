@@ -73,10 +73,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const AvatarFade = styled(Avatar)`
-  position: absolute;
-`;
-
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -259,54 +255,7 @@ const StyledLikeInteractionIcon = styled(InteractionIcon)`
   }
 `;
 
-class AnimatedText extends React.Component {
-  state;
-
-  async Animate(initText, nextText) {
-    const numReplacement = Math.min(initText.length || nextText.length);
-    const iterations = Math.max(Math.min(Math.floor(nextText.length / 2), 6), 16);
-    const numCharactersPerIteration = Math.floor(numReplacement / iterations);
-    let currentText = initText;
-    const sleep = () => new Promise(accept => setTimeout(accept, 400 / iterations));
-    for (let i = 0; i < iterations; i++) {
-      for (let j = 0; j < numCharactersPerIteration; j++) {
-        const characterPosition = i + numCharactersPerIteration * j;
-        const newCharacter = nextText[characterPosition] || ' ';
-        currentText =
-          currentText.slice(0, characterPosition) +
-          newCharacter +
-          currentText.slice(characterPosition + 1);
-      }
-      this.setState({ animatedText: currentText });
-      await sleep();
-    }
-    this.setState({ animatedText: nextText });
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = { animatedText: props.oldText };
-  }
-
-  componentDidMount() {
-    const { oldText, newText } = this.props;
-    if (oldText && oldText !== newText) {
-      this.Animate(oldText, newText);
-    } else {
-      this.setState({ animatedText: newText });
-    }
-  }
-  render() {
-    return <React.Fragment>{this.props.children(this.state.animatedText)}</React.Fragment>;
-  }
-}
-
-const CommentContent = ({
-  comment,
-  guidelinesLink,
-  showTranslation,
-  commentBeingReplaced = comment,
-}) =>
+const CommentContent = ({ comment, guidelinesLink, showTranslation }) =>
   comment.removed ? (
     comment.removedBy === REMOVED_BY.MODERATOR ? (
       <GreyedText>
@@ -327,15 +276,7 @@ const CommentContent = ({
       </GreyedText>
     )
   ) : (
-    <StyledCommentText>
-      {showTranslation ? (
-        comment.translation
-      ) : (
-        <AnimatedText oldText={commentBeingReplaced.comment} newText={comment.comment}>
-          {animatedText => <React.Fragment>{animatedText}</React.Fragment>}
-        </AnimatedText>
-      )}
-    </StyledCommentText>
+    <StyledCommentText>{showTranslation ? comment.translation : comment.comment}</StyledCommentText>
   );
 
 class Comment extends React.Component {
@@ -448,8 +389,6 @@ class Comment extends React.Component {
       spotLightInteraction,
       discussionHighlights,
     } = this.props;
-
-    console.log(this.props.time, this.props.comment.time);
 
     return (
       <React.Fragment>
@@ -582,7 +521,6 @@ class Comment extends React.Component {
   render() {
     const {
       comment,
-      commentBeingReplaced = comment,
       contentId,
       setLikeStatus,
       deleteComment,
@@ -704,50 +642,11 @@ class Comment extends React.Component {
               }
             />
 
-            <ReactCSSTransitionGroup
-              transitionName="example"
-              transitionAppear={false}
-              transitionLeave={true}
-              style={{ position: 'absolute' }}
-            >
-              {this.state.removeLastAvatar ? null : (
-                <Avatar
-                  key={`${commentBeingReplaced.starId}-fade`}
-                  src={commentBeingReplaced.avatarUrl}
-                  initials={commentBeingReplaced.initials}
-                  displayName={commentBeingReplaced.displayName}
-                  starId={commentBeingReplaced.starId}
-                  star={commentBeingReplaced.star}
-                  vip={commentBeingReplaced.vip}
-                  showVerifiedTick={true}
-                  owner={commentBeingReplaced.owner}
-                  onClick={(e, playerName) =>
-                    !!commentBeingReplaced.starId &&
-                    contentDetailPageInteraction({
-                      [PropertyKeys.CONTENT_DETAIL_INTERACTIONS.PLAYER_AVATAR_CLICKED]: true,
-                      [PropertyKeys.CONTENT_DETAIL_INTERACTIONS.PLAYER_NAME]: playerName,
-                      [PropertyKeys.CONTENT_DETAIL_INTERACTIONS.PLAYER_CLICKED_IN_COMMENTS]: true,
-                    })
-                  }
-                />
-              )}
-            </ReactCSSTransitionGroup>
-
             <CommentContainer>
               <CommentDisplayName>
                 <DisplayNameWrapper>
                   <DisplayName removed={comment.removed}>
-                    <AnimatedText
-                      oldText={
-                        `${commentBeingReplaced.forename} ${commentBeingReplaced.surname}` ||
-                        NON_BREAKING_SPACE_CHARACTER
-                      }
-                      newText={
-                        `${comment.forename} ${comment.surname}` || NON_BREAKING_SPACE_CHARACTER
-                      }
-                    >
-                      {animatedText => <React.Fragment>{animatedText}</React.Fragment>}
-                    </AnimatedText>
+                    {`${comment.forename} ${comment.surname}` || NON_BREAKING_SPACE_CHARACTER}
                   </DisplayName>
                 </DisplayNameWrapper>
               </CommentDisplayName>
@@ -756,7 +655,6 @@ class Comment extends React.Component {
                 comment={comment}
                 guidelinesLink={guidelinesLink}
                 showTranslation={showTranslation}
-                commentBeingReplaced={this.props.commentBeingReplaced}
               />
 
               <CommentFooter>

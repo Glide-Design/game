@@ -120,22 +120,44 @@
       padding: 0;
     }
 
-    .example-enter {
+    .commentFade-enter {
       opacity: 0.01;
     }
 
-    .example-enter.example-enter-active {
+    .commentFade-enter.commentFade-enter-active {
       opacity: 1;
-      transition: opacity 1000ms ease-in;
+      transition: opacity 500ms ease-in;
     }
 
-    .example-leave {
+    .commentFade-leave {
       opacity: 1;
     }
 
-    .example-leave.example-leave-active {
+    .commentFade-leave.commentFade-leave-active {
       opacity: 0.01;
-      transition: opacity 400ms ease-in;
+      transition: opacity 500ms ease-in;
+    }
+
+    .commentCrossFade-leave {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 1;
+    }
+
+    .commentCrossFade-leave.commentCrossFade-leave-active {
+      opacity: 0.1;
+      transition: opacity 500ms ease-out;
+    }
+
+    .commentCrossFade-enter {
+      opacity: 0.01;
+    }
+
+    .commentCrossFade-enter.commentCrossFade-enter-active {
+      opacity: 1;
+      transition: opacity 500ms ease-in;
     }
   </style>
   <script src=https://cdn.ravenjs.com/3.24.0/raven.min.js crossorigin=anonymous></script>

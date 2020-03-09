@@ -567,7 +567,7 @@ const mapStateToProps = (state, { contentId, location, contentTypeName }) => {
     seriesId: getSeriesIdByContentId(state)(contentId),
     seasonId: getSeasonIdByContentId(state)(contentId),
     contentMedia: getContentMedia(state)(contentId),
-    contentUrl: '/video/fortnite.mp4', //getContentUrl(state)(contentId),
+    contentUrl: '/video/ronaldo.mp4', //getContentUrl(state)(contentId),
     mimeType: getMimeType(state)(contentId),
     advertisingUrl: getAdvertisingUrl(state)(contentId, fromGuestPass(location) > 0),
     accessToken: get('user.accessToken', state),

@@ -22,6 +22,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  margin-bottom: 50px;
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 `;
 

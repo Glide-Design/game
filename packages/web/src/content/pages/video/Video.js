@@ -130,7 +130,7 @@ const VideoContainer = styled.div`
   }
 
   video {
-    opacity: 0;
+    opacity: 1;
   }
 `;
 

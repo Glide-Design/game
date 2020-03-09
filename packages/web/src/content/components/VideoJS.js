@@ -61,7 +61,7 @@ export default class VideoPlayer extends React.Component {
               this.videoNode = node;
             }}
             className="video-js"
-            playsInline="true"
+            playsInline={true}
           >
             {map(this.props.textTracks, (track, index) => (
               <track

@@ -28,7 +28,9 @@ import {
   UNPIN_COMMENT,
 } from './actions';
 import _mockComments1 from './_mockComments1';
+import _mockComments4000 from './_mockComments4000';
 import _mockComments2 from './_mockComments2';
+import _mockComments6000 from './_mockComments6000';
 import _mockComments3 from './_mockComments3';
 import _mockComments4 from './_mockComments4';
 import _mockComments5 from './_mockComments5';
@@ -36,11 +38,13 @@ import _mockComments6 from './_mockComments6';
 
 const testComments = {
   '2000': _mockComments1,
+  '4000': _mockComments4000,
   '5000': _mockComments2,
+  // '6000': _mockComments6000,
   '8000': _mockComments3,
-  '11000': _mockComments4,
-  '14000': _mockComments5,
-  '16000': _mockComments6,
+  // '11000': _mockComments4,
+  // '14000': _mockComments5,
+  // '16000': _mockComments6,
 };
 
 const getInitials = comment => {

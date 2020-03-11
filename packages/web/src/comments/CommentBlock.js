@@ -11,7 +11,7 @@ import { commentsPageInteraction } from 'xi-core/comments/actions';
 import { PropertyKeys } from 'xi-core/analytics/analyticEvents';
 import LoaderSpinner from '../common/LoaderSpinner';
 import { RepliesInfo, RepliesInfoContainer } from './Comment';
-import CommentBlockDisplayLogic from './CommentBlockDisplayLogic';
+import CommentBlockDisplayLogic from './DisplayLogic/CommentBlockDisplayLogic';
 
 const Container = styled.div`
   position: relative;

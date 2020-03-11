@@ -181,7 +181,6 @@ class Comments extends React.Component {
   state = {
     newComment: '',
     isTextAreaFocused: false,
-    time: 0,
   };
   currentContentId = null;
   textAreaRef = React.createRef();

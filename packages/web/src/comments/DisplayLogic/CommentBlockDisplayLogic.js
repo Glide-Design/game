@@ -1,29 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getCommentsByContentId } from 'xi-core/comments/selectors';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Comment from './Comment';
-
-class CrossFadeComments extends React.Component {
-  state = { mounted: false };
-
-  componentDidMount() {
-    this.setState({ mounted: true });
-  }
-  render() {
-    const { oldComment, newComment } = this.props;
-    return (
-      <ReactCSSTransitionGroup
-        transitionName="commentCrossFade"
-        transitionLeaveTimeout={500}
-        transitionEnterTimeout={500}
-      >
-        {newComment}
-        {oldComment && !this.state.mounted ? oldComment : null}
-      </ReactCSSTransitionGroup>
-    );
-  }
-}
+import Comment from '../Comment';
+import CrossFadeComments from './CrossFadeComments';
+import FadeComments from './FadeComments';
+import mergeNewComments from './mergeNewComments';
 
 export default WrappedCommentBlock => {
   class CommentsDisplayLogic extends React.Component {
@@ -31,25 +12,34 @@ export default WrappedCommentBlock => {
 
     constructor(props) {
       super(props);
+      const comments = props.comments || [];
       this.state = {
-        lastComments: props.comments || [],
-        currentComments: props.comments || [],
+        lastComments: comments,
+        currentComments: comments,
       };
     }
 
-    componentDidUpdate = () => {
-      if (this.props.comments.length > 0) {
-        if (
-          !this.state.currentComments.length ||
-          this.state.currentComments.some((c, i) =>
-            !this.props.comments[i] ? true : c.externalId !== this.props.comments[i].externalId
-          )
-        ) {
-          this.setState({
-            lastComments: this.state.currentComments,
-            currentComments: this.props.comments,
-          });
-        }
+    newCommentsAreAvailable = (oldComments, newComments) => {
+      const { currentComments } = this.state;
+      return (
+        newComments.length > 0 &&
+        (!oldComments.length ||
+          !currentComments.length ||
+          oldComments.some((c, i) =>
+            !newComments[i] ? true : c.externalId !== newComments[i].externalId
+          ))
+      );
+    };
+
+    componentDidUpdate = ({ comments: oldComments }) => {
+      const { comments: newComments, time } = this.props;
+
+      if (this.newCommentsAreAvailable(oldComments, newComments)) {
+        const { currentComments } = this.state;
+        this.setState({
+          lastComments: currentComments,
+          currentComments: mergeNewComments(currentComments, newComments, { time }),
+        });
       }
     };
 
@@ -71,11 +61,7 @@ export default WrappedCommentBlock => {
       const { lastComments = [], currentComments = [] } = this.state;
 
       return (
-        <ReactCSSTransitionGroup
-          transitionName="commentFade"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
-        >
+        <FadeComments>
           {currentComments.map((comment, i) => {
             return comment.externalId !== replyId ? (
               <div key={i} style={{ position: 'relative' }}>
@@ -86,7 +72,7 @@ export default WrappedCommentBlock => {
               </div>
             ) : null;
           })}
-        </ReactCSSTransitionGroup>
+        </FadeComments>
       );
     };
 

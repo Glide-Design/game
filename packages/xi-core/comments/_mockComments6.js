@@ -31,7 +31,7 @@ export default [
     time: 16000,
     externalId: 'ba747679-13f9-4328-85cc-d6c54787f768',
     postedDateTime: 1581919062973,
-    comment: 'RONALDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO !!!!!!!!',
+    comment: 'RONALDOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOO !!!!!!!!',
     nickname: 'Ricardo  D. ',
     avatarUrl:
       'https://yt3.ggpht.com/a/AATXAJwfSeCWUBxVt5HHR-iLsMrHqI67pLlpkuQyyQ=s48-c-k-c0xffffffff-no-rj-mo',
@@ -112,6 +112,7 @@ export default [
     reply: false,
   },
   {
+    time: 16000,
     externalId: '8bf0ce17-cb2d-4695-9278-5d618b422ec3',
     postedDateTime: 1581079099376,
     comment:

@@ -98,7 +98,9 @@ const ContentWrapper = styled.div`
 const CommentContainer = styled.div`
   flex: 1;
   padding-left: 10px;
-  overflow: hidden;
+
+  // Hide this for now to stop scale animation clipping
+  // overflow: hidden;
 `;
 
 const CommentDisplayName = styled.div`
@@ -115,6 +117,9 @@ const StyledCommentText = styled.div`
     color: ${Grey85};
     line-height: 16px;
     font-size: 12px;
+    // Height and overflow added for demo
+    height: 32px;
+    overflow: hidden;
   }
 `;
 
@@ -140,10 +145,13 @@ const CommentFooterItem = styled.div`
 const CommentFooterItemTime = styled(CommentFooterItem)`
   margin-left: auto;
   margin-right: 0;
-  transition: color 1s;
+  transform: scale(1.3);
+  color: #7c52f6;
+  transition: color 1s ease-in, transform 0.75s ease-in;
 
-  &.active {
-    color: #7c52f6;
+  &.in-active {
+    color: #a3a3a3;
+    transform: scale(1);
   }
 `;
 
@@ -223,6 +231,10 @@ const DisplayNameWrapper = styled.div`
   margin-bottom: 10px;
   position: relative;
   max-width: 75%; /* This is to make sure that interaction icon is clickable */
+
+  // Height and overflow added for demo
+  height: 17px;
+  overflow: hidden;
 `;
 
 const DisplayName = styled.span`
@@ -425,12 +437,7 @@ class Comment extends React.Component {
           <FormattedMessage id="comments.reply" defaultMessage="REPLY" />
         </CommentFooterItem>
         <CommentFooterItemTime
-          className={
-            this.props.time > this.props.comment.time &&
-            this.props.time - 1000 < this.props.comment.time
-              ? 'active'
-              : null
-          }
+          className={this.props.time - 1000 > this.props.comment.time ? 'in-active' : null}
         >
           {this.millisToMinutesAndSeconds(this.props.comment.time)}
         </CommentFooterItemTime>

@@ -1,7 +1,7 @@
 export default [
   {
     time: 4000,
-    externalId: 'c16eeab4-5cd5-4205-b74e-bacf5017d5d7',
+    externalId: 'c16eeab4-5cd5-423205-b74e-bacf5017d5d7',
     postedDateTime: 1576259890052,
     comment: 'Unrelenting! Ronaldo: Man vs Machine ❤️❤️❤️❤️',
     avatarUrl:

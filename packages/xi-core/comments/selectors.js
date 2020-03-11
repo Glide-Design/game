@@ -27,7 +27,10 @@ export const getCommentHighlightsByContentId = state => contentId => {
   return results ? results.filter(comment => !comment.importantReply && !comment.removed) : [];
 };
 
-export const getCommentsByContentId = state => (contentId, time) => {
+export const getCommentsByContentId = state => (contentId, time = null) => {
+  if(time === null) {
+    return getOr([], `comments.${contentId}`, state);
+  }
   const timeRoundedDownToNearest1000 = Math.ceil(time / 1000) * 1000;
   let results = getOr([], `comments.${contentId}.${timeRoundedDownToNearest1000}`, state);
   return results; // ? results.filter(comment => comment.parent === 0) : [];

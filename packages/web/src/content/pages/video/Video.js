@@ -130,7 +130,7 @@ const VideoContainer = styled.div`
   }
 
   video {
-    opacity: 0;
+    opacity: 1;
   }
 `;
 
@@ -470,7 +470,7 @@ class Video extends React.Component {
               onPlay={this.checkEntitlementAndContentStatus}
               spline={
                 <SplineContainer className="SplineContainer">
-                  <CommentsSpline height={120} />
+                  <CommentsSpline height={120} videoLength={58000} />
                 </SplineContainer>
               }
             />

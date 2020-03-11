@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import 'rc-swipeout/assets/index.css';
 import { compose, head, get } from 'lodash/fp';
 import { connect } from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 import {
   commentSpotlightInteraction,
@@ -437,7 +436,12 @@ class Comment extends React.Component {
           <FormattedMessage id="comments.reply" defaultMessage="REPLY" />
         </CommentFooterItem>
         <CommentFooterItemTime
-          className={this.props.time - 1000 > this.props.comment.time ? 'in-active' : null}
+          className={
+            this.props.time - 1000 > this.props.comment.time ||
+            this.props.time + 1000 < this.props.comment.time
+              ? 'in-active'
+              : null
+          }
         >
           {this.millisToMinutesAndSeconds(this.props.comment.time)}
         </CommentFooterItemTime>

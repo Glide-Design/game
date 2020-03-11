@@ -1,7 +1,7 @@
 export default [
   {
     time: 16000,
-    externalId: 'c79ea7de-94b6-4603-b60a-6e7379498b31',
+    externalId: 'c79ea7de-94b6-4603-b60a-6e73794w98b31',
     postedDateTime: 1582663817143,
     comment: 'The goal against de gea was insane 🐐',
     avatarUrl:
@@ -29,9 +29,9 @@ export default [
   },
   {
     time: 16000,
-    externalId: 'ba747679-13f9-4328-85cc-d6c54787f768',
+    externalId: 'ba747679-13f9-4328-8as5cc-d6c54787f768',
     postedDateTime: 1581919062973,
-    comment: 'RONALDOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOO !!!!!!!!',
+    comment: 'RONALDOOOOOOO OOOOOO !!!!!!!!',
     nickname: 'Ricardo  D. ',
     avatarUrl:
       'https://yt3.ggpht.com/a/AATXAJwfSeCWUBxVt5HHR-iLsMrHqI67pLlpkuQyyQ=s48-c-k-c0xffffffff-no-rj-mo',
@@ -57,7 +57,7 @@ export default [
   },
   {
     time: 16000,
-    externalId: '9bf52549-92e5-4c80-8a57-6b4c7a7fb1b5',
+    externalId: '9bf52549-92e5-4c80-8abv57-6b4c7a7fb1b5',
     postedDateTime: 1581079141092,
     comment: 'Thanks for coming to Juve Cristiano you are the best',
     nickname: 'Mohammad Banaderi',
@@ -85,7 +85,7 @@ export default [
   },
   {
     time: 16000,
-    externalId: '25796eed-46de-4356-9212-d850bd9bcb0b',
+    externalId: '25796eed-46sde-4356-9212-d850bd9bcb0b',
     postedDateTime: 1581079113209,
     comment: 'El gol de chilena es el unico diferente lol',
     nickname: 'Mohammad Banaderi',
@@ -113,7 +113,7 @@ export default [
   },
   {
     time: 16000,
-    externalId: '8bf0ce17-cb2d-4695-9278-5d618b422ec3',
+    externalId: '8bf0ce17-cb2d-4695fsd-9278-5d618b422ec3',
     postedDateTime: 1581079099376,
     comment:
       "Even I am a Juventus fan for several years I have to say that Ronaldo's overhead goal at Juventus Stadium " +
@@ -147,7 +147,7 @@ export default [
   },
   {
     time: 16000,
-    externalId: 'c79ea7de-94b6-4603-b60a-6e7379498b31',
+    externalId: 'c79ea7d43e-94b6-4603-b60a-6e7379498b31',
     postedDateTime: 1582663817143,
     comment: '🐐🐐🐐🐐 All this and then you gave Luka the Best player , is this a joke ??',
     avatarUrl:
@@ -175,7 +175,7 @@ export default [
   },
   {
     time: 16000,
-    externalId: 'ba747679-13f9-4328-85cc-d6c54787f768',
+    externalId: 'ba747631279-13f9-4328-85cc-d6c54787f768',
     postedDateTime: 1581919062973,
     comment: 'Ronaldo is so far away from Messi it’s unbelievable',
     nickname: 'Ricardo  D. ',

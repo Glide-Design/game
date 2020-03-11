@@ -1,9 +1,9 @@
-import { orderBy } from 'lodash/fp';
+import { orderBy, uniqBy } from 'lodash/fp';
 
 const MAX_COMMENTS_VISIBLE_ON_VIEWPORT = 6; // Work this out dynamically in future
 const MAX_REPLACEMENTS = 2;
 
-const notAlreadyOnScreen = onScreenComments => comments =>
+const filterCommentsAlreadyOnScreen = onScreenComments => comments =>
   comments.filter(
     comment =>
       !onScreenComments.some(onScreenComment => onScreenComment.externalId === comment.externalId)
@@ -26,16 +26,18 @@ const removeScore = comments => comments.map(c => c.comment);
 
 const testForReplacements = (currentCommentsScored, highestNewComments, replacementCallback) => {
   const replacements = [];
-  highestNewComments.forEach(_highestNewComment => {
-    const replacementIdx = currentCommentsScored.filter(
-      _currentComment =>
-        _currentComment.score <= _highestNewComment.score &&
-        replacements.indexOf(_currentComment.originalIndex) === -1
+  highestNewComments.forEach((_highestNewComment, i) => {
+    const currentCommentsWithLowerScores = orderBy(['score'], ['asc'])(
+      currentCommentsScored.filter(
+        _currentComment =>
+          _currentComment.score <= _highestNewComment.score &&
+          replacements.indexOf(_currentComment.originalIndex) === -1
+      )
     );
-    if (replacementIdx.length) {
-      const originalIndex = replacementIdx[0].originalIndex;
+    if (currentCommentsWithLowerScores.length) {
+      const originalIndex = currentCommentsWithLowerScores[0].originalIndex;
       replacements.push(originalIndex);
-      replacementCallback(originalIndex);
+      replacementCallback(originalIndex, i);
     }
   });
 };
@@ -43,7 +45,12 @@ const testForReplacements = (currentCommentsScored, highestNewComments, replacem
 const mergeNewComments = (_currentComments, _newComments, { time }) => {
   const currentCommentsOnViewPort = _currentComments.slice(0, MAX_COMMENTS_VISIBLE_ON_VIEWPORT);
 
-  const newComments = notAlreadyOnScreen(currentCommentsOnViewPort)(_newComments);
+  const currentCommentsNotOnViewPort =
+    _currentComments.length > MAX_COMMENTS_VISIBLE_ON_VIEWPORT
+      ? _currentComments.slice(MAX_COMMENTS_VISIBLE_ON_VIEWPORT)
+      : [];
+
+  const newComments = filterCommentsAlreadyOnScreen(currentCommentsOnViewPort)(_newComments);
 
   const spacesLeftOnViewport = MAX_COMMENTS_VISIBLE_ON_VIEWPORT - currentCommentsOnViewPort.length;
 
@@ -52,7 +59,11 @@ const mergeNewComments = (_currentComments, _newComments, { time }) => {
   };
 
   if (thereIsRoomToAppendAllNewComments()) {
-    return [...currentCommentsOnViewPort, ...newComments];
+    return uniqBy('externalId')([
+      ...currentCommentsOnViewPort,
+      ...newComments,
+      ...currentCommentsNotOnViewPort,
+    ]);
   }
 
   const currentCommentsScored = assignScoreToComments(currentCommentsOnViewPort, { time });
@@ -65,18 +76,31 @@ const mergeNewComments = (_currentComments, _newComments, { time }) => {
 
   if (shouldTestForReplacements()) {
     const highestNewComments = newCommentsScored.slice(0, MAX_REPLACEMENTS - spacesLeftOnViewport);
-    testForReplacements(currentCommentsScored, highestNewComments, idx => {
-      currentCommentsOnViewPort[idx] = highestNewComments.pop().comment;
-      numberReplaced++;
-    });
+    testForReplacements(
+      currentCommentsScored,
+      highestNewComments,
+      (currentCommentIdx, newCommentIdx) => {
+        currentCommentsOnViewPort[currentCommentIdx] = highestNewComments[newCommentIdx].comment;
+        numberReplaced++;
+      }
+    );
   }
 
   if (numberReplaced > 0 || newCommentsForEmptySpaces.length) {
     const remainingNewComments = removeScore(newCommentsScored.slice(numberReplaced));
-    return [...currentCommentsOnViewPort, ...newCommentsForEmptySpaces, ...remainingNewComments];
+    return uniqBy('externalId')([
+      ...currentCommentsOnViewPort,
+      ...newCommentsForEmptySpaces,
+      ...remainingNewComments,
+      ...currentCommentsNotOnViewPort,
+    ]);
   }
 
-  return [...currentCommentsOnViewPort, ...newComments];
+  return uniqBy('externalId')([
+    ...currentCommentsOnViewPort,
+    ...newComments,
+    ...currentCommentsNotOnViewPort,
+  ]);
 };
 
 export default mergeNewComments;

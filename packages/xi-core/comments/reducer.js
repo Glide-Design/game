@@ -40,11 +40,11 @@ const testComments = {
   '2000': _mockComments1,
   '4000': _mockComments4000,
   '5000': _mockComments2,
-  // '6000': _mockComments6000,
+  '6000': _mockComments6000,
   '8000': _mockComments3,
-  // '11000': _mockComments4,
-  // '14000': _mockComments5,
-  // '16000': _mockComments6,
+  '11000': _mockComments4,
+  '14000': _mockComments5,
+  '16000': _mockComments6,
 };
 
 const getInitials = comment => {

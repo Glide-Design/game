@@ -1,7 +1,7 @@
 export default [
   {
     time: 6000,
-    externalId: '9bf52549-92e5-4c80-8a57-6b4c7a7fb1b5',
+    externalId: '9bf52549123-92e5-4c80-8a57-6b4c7a7fb1b5',
     postedDateTime: 1581079141092,
     comment: 'Thanks for coming to Juve Cristiano you are the best',
     nickname: 'Mohammad Banaderi',
@@ -29,7 +29,7 @@ export default [
   },
   {
     time: 6000,
-    externalId: '25796eed-46de-4356-9212-d850bd9bcb0b',
+    externalId: '25796eed-46de-4356-sdf9212-d850bd9bcb0b',
     postedDateTime: 1581079113209,
     comment: 'El gol de chilena es el unico diferente lol',
     nickname: 'Mohammad Banaderi',

@@ -14,17 +14,17 @@ const CommentsSpline = ({ comments, height, videoLength }) => {
     map(time => {
       return {
         time: Math.floor(Number(time) / 1000),
-        comments: comments[time].length,
+        comments: comments[time].length + 1.5 / comments[time].length,
       };
     }),
     c => [...c, ...sampling.map(v => ({ time: v, comments: 0 }))],
     uniqBy('time'),
     orderBy('time', 'asc')
   )(comments);
-
+  console.log(_commments);
   return (
     <Chart data={_commments} height={height} style={{ padding: 0 }}>
-      <BarSeries valueField="comments" argumentField="time" />
+      <BarSeries width={10} valueField="comments" argumentField="time" />
       <Animation />
     </Chart>
   );
